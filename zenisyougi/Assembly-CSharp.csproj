@@ -68,6 +68,7 @@
     <Compile Include="Assets\script\Motikinn.cs" />
     <Compile Include="Assets\script\SetPosition.cs" />
     <Compile Include="Assets\script\ToChangePoint.cs" />
+    <Compile Include="Assets\script\TurnChange.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Users/tugu/zenisyougi-game/zenisyougi/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

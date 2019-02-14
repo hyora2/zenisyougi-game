@@ -17,8 +17,8 @@ public class Gamecontroller : MonoBehaviour
     Mapdata mapdata;
     SetPosition setP;
     private int keeplistnumber;
-
-
+    GameObject turnChangeObj;
+    TurnChange tc;
 
 
     private void Start()
@@ -28,6 +28,8 @@ public class Gamecontroller : MonoBehaviour
         mapdata = GetComponent<Mapdata>();
         setP = GetComponent<SetPosition>();
         AmountOfWin = 171;
+        turnChangeObj = GameObject.Find("TurnChangeObj");
+        tc = turnChangeObj.GetComponent<TurnChange>();
 
     }
 
@@ -112,6 +114,8 @@ public class Gamecontroller : MonoBehaviour
                     }
                     selectedobj = null;
                     //ここにターン開始時の処理
+                    tc.MoveTurnObj(turnplayer);
+
                     if(turnplayer == 1)
                     {//駒の自主撤退
                         for(int y = 7; y >= 6; y--)
