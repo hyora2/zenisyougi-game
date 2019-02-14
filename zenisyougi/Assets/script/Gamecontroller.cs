@@ -66,6 +66,7 @@ public class Gamecontroller : MonoBehaviour
                             }
                             else if (selectedobj.tag == "motikinn")
                             {//他の持ち金が選ばれていたとき
+
                                 Motikinn moti;
                                 moti = selectedobj.GetComponent<Motikinn>();
                                 moti.InvisibleMove();
@@ -164,6 +165,7 @@ public class Gamecontroller : MonoBehaviour
                                     if (mapdata.P1motikinn[motikinn.GetKomakindToIndexnum(motikinn.GetKomakind())] >= 1)
                                     {
                                         motikinn.MotikinnShowMove(motikinn.GetKomakind(), turnplayer);
+                                        komaobj.transform.Find("motikinnselect").gameObject.SetActive(true);
                                     }
                                 
                             }else if (turnplayer == 2)
@@ -171,7 +173,8 @@ public class Gamecontroller : MonoBehaviour
                                     if (mapdata.P2motikinn[motikinn.GetKomakindToIndexnum(motikinn.GetKomakind())] >= 1)
                                     {
                                         motikinn.MotikinnShowMove(motikinn.GetKomakind(), turnplayer);
-                                    }
+                                    komaobj.transform.Find("motikinnselect").gameObject.SetActive(true);
+                                }
                                 
                             }
 
@@ -183,15 +186,17 @@ public class Gamecontroller : MonoBehaviour
                             Ko = selectedobj.GetComponent<koma>();
                             Ko.InvisibleMove(selectedobj);
                             selectedobj = null;
+                           // komaobj.transform.Find("motikinnselect").gameObject.SetActive(true);
 
                         }
                     }
                     selectedobj = komaobj;
-                    //ここに打てる場所のshowmove。motikinnsumが0なら何もしない
+                    //ここに打てる場所のshowmove。
                     if(turnplayer == 1)
                     {
                         if (mapdata.P1motikinn[motikinn.GetKomakindToIndexnum(motikinn.GetKomakind())] >= 1)
                         {
+                            komaobj.transform.Find("motikinnselect").gameObject.SetActive(true);
                             motikinn.MotikinnShowMove(motikinn.GetKomakind(), turnplayer);
                         }
 
@@ -200,6 +205,7 @@ public class Gamecontroller : MonoBehaviour
                     {
                         if (mapdata.P2motikinn[motikinn.GetKomakindToIndexnum(motikinn.GetKomakind())] >= 1)
                         {
+                            komaobj.transform.Find("motikinnselect").gameObject.SetActive(true);
                             motikinn.MotikinnShowMove(motikinn.GetKomakind(), turnplayer);
                         }
                     }

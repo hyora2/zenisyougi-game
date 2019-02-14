@@ -133,7 +133,7 @@ public class Motikinn : MonoBehaviour
         {
             item.gameObject.SetActive(false);
         }
-
+        transform.Find("motikinnselect").gameObject.SetActive(false);
     }
 
     public int ReturnXYnum(int x, int y)
