@@ -1,0 +1,19 @@
+﻿<Properties StartupConfiguration="{7A5F8C70-6F4E-AFC0-0E30-D9A6D69D3F9E}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/script/Gamecontroller.cs">
+    <Files>
+      <File FileName="Assets/script/Motikinn.cs" Line="148" Column="19" />
+      <File FileName="Assets/script/koma.cs" Line="127" Column="123" />
+      <File FileName="Assets/script/Gamecontroller.cs" Line="263" Column="31" />
+      <File FileName="Assets/script/ToChangePoint.cs" Line="38" Column="34" />
+      <File FileName="Assets/script/SetPosition.cs" Line="90" Column="46" />
+      <File FileName="Assets/script/Mapdata.cs" Line="16" Column="23" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
