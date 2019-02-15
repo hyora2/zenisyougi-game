@@ -19,6 +19,10 @@ public class Gamecontroller : MonoBehaviour
     private int keeplistnumber;
     GameObject turnChangeObj;
     TurnChange tc;
+    GameObject fadeoutOBJ;
+    FadeScript fade;
+    bool gameset;
+
 
 
     private void Start()
@@ -30,11 +34,15 @@ public class Gamecontroller : MonoBehaviour
         AmountOfWin = 171;
         turnChangeObj = GameObject.Find("TurnChangeObj");
         tc = turnChangeObj.GetComponent<TurnChange>();
+        fadeoutOBJ = GameObject.Find("GameSetCanvas");
+        fade = fadeoutOBJ.GetComponent<FadeScript>();
+        gameset = false;
 
     }
 
     private void Update()
     {
+        if (gameset == true) return;
         if ((mapdata.P1motikinnsum >= AmountOfWin) ||(mapdata.P2motikinnsum >= AmountOfWin))
         {
             if ((mapdata.P1motikinnsum >= AmountOfWin) && (mapdata.P2motikinnsum >= AmountOfWin)) GameSet(0);
@@ -446,7 +454,9 @@ public GameObject Get_Unit(Vector3 pos){
         } else  {
             Debug.Log(winplayer + "P win!");
                   }
-        EditorApplication.isPlaying = false;
+        gameset = true;
+        fade.Setfade(true);
+      
     }
 
 

@@ -3,11 +3,13 @@
     <Files>
       <File FileName="Assets/script/Motikinn.cs" Line="136" Column="1" />
       <File FileName="Assets/script/koma.cs" Line="122" Column="108" />
-      <File FileName="Assets/script/Gamecontroller.cs" Line="117" Column="48" />
+      <File FileName="Assets/script/Gamecontroller.cs" Line="39" Column="25" />
       <File FileName="Assets/script/ToChangePoint.cs" Line="38" Column="34" />
       <File FileName="Assets/script/SetPosition.cs" Line="90" Column="46" />
       <File FileName="Assets/script/Mapdata.cs" Line="16" Column="23" />
       <File FileName="Assets/script/TurnChange.cs" Line="26" Column="69" />
+      <File FileName="Assets/script/SceneChenge.cs" Line="10" Column="45" />
+      <File FileName="Assets/script/FadeScript.cs" Line="23" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
