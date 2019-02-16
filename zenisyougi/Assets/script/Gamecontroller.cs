@@ -19,10 +19,15 @@ public class Gamecontroller : MonoBehaviour
     private int keeplistnumber;
     GameObject turnChangeObj;
     TurnChange tc;
+    public GameObject turnOBJ1;
+    public GameObject turnOBJ2;
+
     GameObject fadeoutOBJ;
     FadeScript fade;
     bool gameset;
 
+    public GameObject p1win;
+    public GameObject p2win;
 
 
     private void Start()
@@ -32,13 +37,20 @@ public class Gamecontroller : MonoBehaviour
         mapdata = GetComponent<Mapdata>();
         setP = GetComponent<SetPosition>();
         AmountOfWin = 171;
+        /*
         turnChangeObj = GameObject.Find("TurnChangeObj");
         tc = turnChangeObj.GetComponent<TurnChange>();
+        */
+       // turnOBJ1 = GameObject.FindGameObjectWithTag("turn1");
+       // turnOBJ2 = GameObject.FindGameObjectWithTag("turn2");      
         fadeoutOBJ = GameObject.Find("GameSetCanvas");
         fade = fadeoutOBJ.GetComponent<FadeScript>();
         gameset = false;
 
+
     }
+
+    
 
     private void Update()
     {
@@ -108,7 +120,6 @@ public class Gamecontroller : MonoBehaviour
                         motikinnobj = selectedobj.GetComponent<Motikinn>();
                         // Debug.Log(motikinnobj.GetKomakind());
                         MotikinnwoBaniUtu(motikinnobj.GetKomakind(), turnplayer, komaobj);
-
                         motikinnobj.InvisibleMove();
 
                     }
@@ -116,13 +127,17 @@ public class Gamecontroller : MonoBehaviour
                     if (turnplayer == 1)
                     {
                         turnplayer = 2;
+                        turnOBJ2.gameObject.SetActive(true);
+                        turnOBJ1.gameObject.SetActive(false);
                     }else if(turnplayer == 2)
                     {
                         turnplayer = 1;
+                        turnOBJ1.gameObject.SetActive(true);
+                        turnOBJ2.gameObject.SetActive(false);
                     }
                     selectedobj = null;
                     //ここにターン開始時の処理
-                    tc.MoveTurnObj(turnplayer);
+                    //tc.MoveTurnObj(turnplayer);
 
                     if(turnplayer == 1)
                     {//駒の自主撤退
@@ -451,8 +466,11 @@ public GameObject Get_Unit(Vector3 pos){
     {
         if (winplayer == 0) {
             Debug.Log("draw!");
+
         } else  {
             Debug.Log(winplayer + "P win!");
+            if (winplayer == 1) p1win.SetActive(true);
+            if (winplayer == 2) p2win.SetActive(true);
                   }
         gameset = true;
         fade.Setfade(true);
