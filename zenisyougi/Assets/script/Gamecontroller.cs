@@ -478,6 +478,182 @@ public GameObject Get_Unit(Vector3 pos){
     }
 
 
+    public void Change1Up1()
+    {
+        if (turnplayer != 1) return;
+        if (mapdata.P1motikinn[0] < 5) return;
+        if (mapdata.P1motikinn[1] >= 10) return;
+        mapdata.P1motikinn[0] = mapdata.P1motikinn[0] - 5;
+        mapdata.P1motikinn[1]++;
+        mapdata.TextUpdate();
+        return;
+    }
+
+    public void Break5_1()
+    {
+        if (turnplayer != 1) return;
+        if (mapdata.P1motikinn[1] <= 0) return;
+        if (mapdata.P1motikinn[0] >= 10) return;
+        mapdata.P1motikinn[1]--;
+        mapdata.P1motikinn[0] = mapdata.P1motikinn[0] + 5;
+        mapdata.TextUpdate();
+        return;
+    }
+
+    public void Change5Up1()
+    {
+        if (turnplayer != 1) return;
+        if (mapdata.P1motikinn[1] < 2) return;
+        if (mapdata.P1motikinn[2] >= 10) return;
+        mapdata.P1motikinn[1] = mapdata.P1motikinn[1] - 2;
+        mapdata.P1motikinn[2]++;
+        mapdata.TextUpdate();
+        return;
+    }
+
+    public void Break10_1()
+    {
+        if (turnplayer != 1) return;
+        if (mapdata.P1motikinn[2] <= 0) return;
+        if (mapdata.P1motikinn[1] >= 10) return;
+        mapdata.P1motikinn[2]--;
+        mapdata.P1motikinn[1] = mapdata.P1motikinn[1] + 2;
+        mapdata.TextUpdate();
+        return;
+    }
+
+    public void Change10Up1()
+    {
+        if (turnplayer != 1) return;
+        if (mapdata.P1motikinn[2] < 5) return;
+        if (mapdata.P1motikinn[3] >= 10) return;
+        mapdata.P1motikinn[2] = mapdata.P1motikinn[2] - 5;
+        mapdata.P1motikinn[3]++;
+        mapdata.TextUpdate();
+        return;
+    }
+
+    public void Break50_1()
+    {
+        if (turnplayer != 1) return;
+        if (mapdata.P1motikinn[3] <= 0) return;
+        if (mapdata.P1motikinn[2] >= 10) return;
+        mapdata.P1motikinn[3]--;
+        mapdata.P1motikinn[2] = mapdata.P1motikinn[2] + 5;
+        mapdata.TextUpdate();
+        return;
+    }
+    public void Change50Up1()
+    {
+        if (turnplayer != 1) return;
+        if (mapdata.P1motikinn[3] < 2) return;
+        if (mapdata.P1motikinn[4] >= 10) return;
+        mapdata.P1motikinn[3] = mapdata.P1motikinn[3] - 2;
+        mapdata.P1motikinn[4]++;
+        mapdata.TextUpdate();
+        return;
+    }
+
+    public void Break100_1()
+    {
+        if (turnplayer != 1) return;
+        if (mapdata.P1motikinn[4] <= 0) return;
+        if (mapdata.P1motikinn[3] >= 10) return;
+        mapdata.P1motikinn[4]--;
+        mapdata.P1motikinn[3] = mapdata.P1motikinn[3] + 2;
+        mapdata.TextUpdate();
+        return;
+    }
+
+    public void Change1Up2()
+    {
+        if (turnplayer != 2) return;
+        if (mapdata.P2motikinn[0] < 5) return;
+        if (mapdata.P2motikinn[1] >= 10) return;
+        mapdata.P2motikinn[0] = mapdata.P2motikinn[0] - 5;
+        mapdata.P2motikinn[1]++;
+        mapdata.TextUpdate();
+        return;
+    }
+
+    public void Break5_2()
+    {
+        if (turnplayer != 2) return;
+        if (mapdata.P2motikinn[1] <= 0) return;
+        if (mapdata.P2motikinn[0] >= 10) return;
+        mapdata.P2motikinn[1]--;
+        mapdata.P2motikinn[0] = mapdata.P2motikinn[0] + 5;
+        mapdata.TextUpdate();
+        return;
+    }
+
+    public void Change5Up2()
+    {
+        if (turnplayer != 2) return;
+        if (mapdata.P2motikinn[1] < 2) return;
+        if (mapdata.P2motikinn[2] >= 10) return;
+        mapdata.P2motikinn[1] = mapdata.P2motikinn[1] - 2;
+        mapdata.P2motikinn[2]++;
+        mapdata.TextUpdate();
+        return;
+    }
+
+    public void Break10_2()
+    {
+        if (turnplayer != 2) return;
+        if (mapdata.P2motikinn[2] <= 0) return;
+        if (mapdata.P2motikinn[1] >= 10) return;
+        mapdata.P2motikinn[2]--;
+        mapdata.P2motikinn[1] = mapdata.P2motikinn[1] + 2;
+        mapdata.TextUpdate();
+        return;
+    }
+
+    public void Change10Up2()
+    {
+        if (turnplayer != 2) return;
+        if (mapdata.P2motikinn[2] < 5) return;
+        if (mapdata.P2motikinn[3] >= 10) return;
+        mapdata.P2motikinn[2] = mapdata.P2motikinn[2] - 5;
+        mapdata.P2motikinn[3]++;
+        mapdata.TextUpdate();
+        return;
+    }
+
+    public void Break50_2()
+    {
+        if (turnplayer != 2) return;
+        if (mapdata.P2motikinn[3] <= 0) return;
+        if (mapdata.P2motikinn[2] >= 10) return;
+        mapdata.P2motikinn[3]--;
+        mapdata.P2motikinn[2] = mapdata.P2motikinn[2] + 5;
+        mapdata.TextUpdate();
+        return;
+    }
+    public void Change50Up2()
+    {
+        if (turnplayer != 2) return;
+        if (mapdata.P2motikinn[3] < 2) return;
+        if (mapdata.P2motikinn[4] >= 10) return;
+        mapdata.P2motikinn[3] = mapdata.P2motikinn[3] - 2;
+        mapdata.P2motikinn[4]++;
+        mapdata.TextUpdate();
+        return;
+    }
+
+    public void Break100_2()
+    {
+        if (turnplayer != 2) return;
+        if (mapdata.P2motikinn[4] <= 0) return;
+        if (mapdata.P2motikinn[3] >= 10) return;
+        mapdata.P2motikinn[4]--;
+        mapdata.P2motikinn[3] = mapdata.P2motikinn[3] + 2;
+        mapdata.TextUpdate();
+        return;
+    }
+
+
+
 
 }
 
