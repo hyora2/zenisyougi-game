@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8205800134336326204}
   - component: {fileID: 3962836667840690202}
   m_Layer: 0
-  m_Name: select6
+  m_Name: select17
   m_TagString: toMove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 2705826009497087767}
   - component: {fileID: 8544447311287393531}
   m_Layer: 0
-  m_Name: select8
+  m_Name: select15
   m_TagString: toMove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 8292750096600352842}
   - component: {fileID: 5042195048045079334}
   m_Layer: 0
-  m_Name: select15
+  m_Name: select8
   m_TagString: toMove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 773367622379008989}
   - component: {fileID: 3613313225832527005}
   m_Layer: 0
-  m_Name: select17
+  m_Name: select6
   m_TagString: toMove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -559,7 +559,7 @@ GameObject:
   - component: {fileID: 9160745829621778820}
   - component: {fileID: 6592914275113995963}
   m_Layer: 0
-  m_Name: select11
+  m_Name: select12
   m_TagString: toMove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -665,7 +665,7 @@ GameObject:
   - component: {fileID: 7831898566647142964}
   - component: {fileID: 7606492170548323219}
   m_Layer: 0
-  m_Name: select7
+  m_Name: select16
   m_TagString: toMove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 6658433531011702953}
   - component: {fileID: 20600030012540453}
   m_Layer: 0
-  m_Name: select16
+  m_Name: select7
   m_TagString: toMove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -877,7 +877,7 @@ GameObject:
   - component: {fileID: 1627052524949396425}
   - component: {fileID: 3675111681875098507}
   m_Layer: 0
-  m_Name: select12
+  m_Name: select11
   m_TagString: toMove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

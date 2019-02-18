@@ -258,3 +258,7 @@
 /Users/tugu/Desktop/game/zenisyougi/obj/Debug/Assembly-CSharp.csproj.CopyComplete
 /Users/tugu/Desktop/game/zenisyougi/obj/Debug/Assembly-CSharp.dll
 /Users/tugu/Desktop/game/zenisyougi/obj/Debug/Assembly-CSharp.pdb
+/Users/tugu/zenisyougi-game/zenisyougi/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+/Users/tugu/zenisyougi-game/zenisyougi/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache
+/Users/tugu/zenisyougi-game/zenisyougi/obj/Debug/Assembly-CSharp.dll
+/Users/tugu/zenisyougi-game/zenisyougi/obj/Debug/Assembly-CSharp.pdb

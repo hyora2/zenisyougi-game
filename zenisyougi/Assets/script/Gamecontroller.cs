@@ -12,7 +12,7 @@ public class Gamecontroller : MonoBehaviour
 
     koma komadata;
 
-    ToChangePoint changePoint;
+    ToChangePoint changePoint;//座標変換用クラス
     public GameObject selectedobj;
     Mapdata mapdata;
     SetPosition setP;

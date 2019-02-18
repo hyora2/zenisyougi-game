@@ -119,6 +119,7 @@ MonoBehaviour:
   PorE: 0
   Junpflg: 0
   blockflg: 0
+  ableMove: 000000000000000000000000000000000000000000000000
 --- !u!1001 &188126783571232164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 1717054100938775745, guid: bdebef638869048a28c557413ffa89be,
         type: 3}
       propertyPath: m_Name
-      value: select22
+      value: select1
       objectReference: {fileID: 0}
     - target: {fileID: 1717054100938775745, guid: bdebef638869048a28c557413ffa89be,
         type: 3}
@@ -209,7 +210,7 @@ PrefabInstance:
     - target: {fileID: 1717054100938775745, guid: bdebef638869048a28c557413ffa89be,
         type: 3}
       propertyPath: m_Name
-      value: select11
+      value: select12
       objectReference: {fileID: 0}
     - target: {fileID: 1717054100938775745, guid: bdebef638869048a28c557413ffa89be,
         type: 3}
@@ -289,7 +290,7 @@ PrefabInstance:
     - target: {fileID: 1717054100938775745, guid: bdebef638869048a28c557413ffa89be,
         type: 3}
       propertyPath: m_Name
-      value: select20
+      value: select3
       objectReference: {fileID: 0}
     - target: {fileID: 1717054100938775745, guid: bdebef638869048a28c557413ffa89be,
         type: 3}
@@ -369,7 +370,7 @@ PrefabInstance:
     - target: {fileID: 1717054100938775745, guid: bdebef638869048a28c557413ffa89be,
         type: 3}
       propertyPath: m_Name
-      value: select21
+      value: select2
       objectReference: {fileID: 0}
     - target: {fileID: 1717054100938775745, guid: bdebef638869048a28c557413ffa89be,
         type: 3}
@@ -449,7 +450,7 @@ PrefabInstance:
     - target: {fileID: 1717054100938775745, guid: bdebef638869048a28c557413ffa89be,
         type: 3}
       propertyPath: m_Name
-      value: select12
+      value: select11
       objectReference: {fileID: 0}
     - target: {fileID: 1717054100938775745, guid: bdebef638869048a28c557413ffa89be,
         type: 3}

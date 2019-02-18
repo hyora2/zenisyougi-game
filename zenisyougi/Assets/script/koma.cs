@@ -1,16 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class koma : MonoBehaviour
 {
     Vector3 WorldKomaPos;
-    [SerializeField]Vector2 LocalKomaPos;
+    [SerializeField] Vector2 LocalKomaPos;
     [SerializeField] int Komakind;
     [SerializeField] int PorE;
     [SerializeField] bool Junpflg;
     [SerializeField] bool blockflg;
-    [SerializeField] bool[] ableMove = new bool[24]; 
+    [SerializeField] bool[] ableMove = new bool[24];
 
     private bool selectnow;
     GameObject cont;
@@ -19,8 +18,15 @@ public class koma : MonoBehaviour
 
 
     private string[] komaname = new string[12];
-    
 
+    private List<int>  BLOCKKOMAKIND = new List<int>
+    {
+        5,
+        100,
+
+    };
+
+  
     private void Start()
     {
         cont = GameObject.Find("GameCont");
@@ -100,35 +106,145 @@ public class koma : MonoBehaviour
 
     }
 
+    private List<string> komaNames = new List<string>
+    {
+        "1yen1(Clone)",
+        "5yen1(Clone)",
+        "10yen1(Clone)",
+        "50yen1(Clone)",
+        "100yen1(Clone)",
+        "500yen1(Clone)",
+        "1yen2(Clone)",
+        "5yen2(Clone)",
+        "10yen2(Clone)",
+        "50yen2(Clone)",
+        "100yen2(Clone)",
+        "500yen2(Clone)",
+
+    };
+
     private void KomanameSet(){
-        komaname[0] = "1yen1(Clone)";
-        komaname[1] = "5yen1(Clone)";
-        komaname[2] = "10yen1(Clone)";
-        komaname[3] = "50yen1(Clone)";
-        komaname[4] = "100yen1(Clone)";
-        komaname[5] = "500yen1(Clone)";
-        komaname[6] = "1yen2(Clone)";
-        komaname[7] = "5yen2(Clone)";
-        komaname[8] = "10yen2(Clone)";
-        komaname[9] = "50yen2(Clone)";
-        komaname[10] = "100yen2(Clone)";
-        komaname[11] = "500yen2(Clone)";
 
-
+        for(int i = 0; i < this.komaNames.Count; i++)
+        {
+            komaname[i] = komaNames[i];
+        }
+        //komaname[0] = "1yen1(Clone)";
+        //komaname[1] = "5yen1(Clone)";
+        //komaname[2] = "10yen1(Clone)";
+        //komaname[3] = "50yen1(Clone)";
+        //komaname[4] = "100yen1(Clone)";
+        //komaname[5] = "500yen1(Clone)";
+        //komaname[6] = "1yen2(Clone)";
+        //komaname[7] = "5yen2(Clone)";
+        //komaname[8] = "10yen2(Clone)";
+        //komaname[9] = "50yen2(Clone)";
+        //komaname[10] = "100yen2(Clone)";
+        //komaname[11] = "500yen2(Clone)";
     }
+
+    private Dictionary<int, List<bool>> komaInfos = new Dictionary<int, List<bool>>
+    {
+        {1,new List<bool>{
+        false,false,false,false,false,
+        false,true,true,true,false,
+        false,false,    false,false,
+        false,false,false,false,false,
+        false,false,false,false,false,
+        } },
+
+        {5,new List<bool>{
+        false,false,false,false,false,
+        false,true,false,true,false,
+        false,false,     false,false,
+        false,true,false,true,false,
+        false,false,false,false,false,
+        } },
+
+        {10,new List<bool>{
+        false,false,false,false,false,
+        false,true,true,true,false,
+        false,true,    true,false,
+        false,false,true,false,false,
+        false,false,false,false,false,
+        } },
+
+        {50,new List<bool>{
+        false,true,true,true,false,
+        false,false,false,false,false,
+        false,true,      true,false,
+        false,false,false,false,false,
+        false,false,false,false,false,
+        } },
+
+        {100,new List<bool>{
+        false,false,true,false,false,
+        false,false,true,false,false,
+        true, true,       true,true,
+        false,false,true,false,false,
+        false,false,true,false,false,
+        } },
+
+        {500,new List<bool>{
+        false,false,false,false,false,
+        false,true,true,true,false,
+        false,true,     true,false,
+        false,true,true,true,false,
+        false,false,false,false,false,
+        } },
+
+        {0,new List<bool>{
+        false,false,false,false,false,
+        false,false,false,false,false,
+        false,false,    false,false,
+        false,false,false,false,false,
+        false,false,false,false,false,
+        } },
+    };
+
+    private List<int> komaKinds = new List<int>
+    {
+        1,
+        5,
+        10,
+        50,
+        100,
+        500,
+        1,
+        5,
+        10,
+        50,
+        100,
+        500,
+    };
+
     private void KomakindSet(){
-        if (this.gameObject.name == komaname[0]) {  Komakind = 1;ableMove[6] = ableMove[7] = ableMove[8] = true;}
-        if (this.gameObject.name == komaname[1]) { Komakind = 5; ableMove[6] = ableMove[8] = ableMove[15] = ableMove[17] = true; }
-        if (this.gameObject.name == komaname[2]) { Komakind = 10; ableMove[6] = ableMove[7] = ableMove[8] = ableMove[11] =ableMove[12] = ableMove[16] = true; }
-        if (this.gameObject.name == komaname[3]) { Komakind = 50; ableMove[1] = ableMove[2] = ableMove[3] = ableMove[11] = ableMove[12] = true; }
-        if (this.gameObject.name == komaname[4]) { Komakind = 100; ableMove[2] = ableMove[7] = ableMove[12] = ableMove[13] = ableMove[16] = ableMove[21] = ableMove[11] = ableMove[10] = true; }
-        if (this.gameObject.name == komaname[5]) { Komakind = 500; ableMove[6] = ableMove[7] = ableMove[8] = ableMove[11] = ableMove[12] = ableMove[15] = ableMove[16] = ableMove[17] = true; }
-        if (this.gameObject.name == komaname[6]) { Komakind = 1; ableMove[15] = ableMove[16] = ableMove[17] = true; }
-        if (this.gameObject.name == komaname[7]) { Komakind = 5; ableMove[15] = ableMove[17] = ableMove[6] = ableMove[8] = true; }
-        if (this.gameObject.name == komaname[8]) { Komakind = 10; ableMove[16] = ableMove[17] = ableMove[15] = ableMove[7] = ableMove[11]=ableMove[12] = true; }
-        if (this.gameObject.name == komaname[9]) { Komakind = 50; ableMove[20] = ableMove[21] = ableMove[22] = ableMove[11] = ableMove[12] = true; }
-        if (this.gameObject.name == komaname[10]) { Komakind = 100; ableMove[2] = ableMove[7] = ableMove[12] = ableMove[13] = ableMove[16] = ableMove[21] = ableMove[11] = ableMove[10] = true; }
-        if (this.gameObject.name == komaname[11]) { Komakind = 500; ableMove[6] = ableMove[7] = ableMove[8] = ableMove[11] = ableMove[12] = ableMove[15] = ableMove[16] = ableMove[17] = true; }
+
+        for(int i = 0; i < komaname.Length; i++)
+        {
+            if(this.gameObject.name.Equals(komaname[i]))
+            {
+                // 移動可能なマスを定義する。
+                int key = komaKinds[i];
+
+                List<bool> ableMoveArea = komaInfos[key];
+                for (int j = 0; j < ableMoveArea.Count; j++)
+                    ableMove[j] = ableMoveArea[j];
+            }
+        }
+
+        //if (this.gameObject.name == komaname[0]) {  Komakind = 1;ableMove[6] = ableMove[7] = ableMove[8] = true;}
+        //if (this.gameObject.name == komaname[1]) { Komakind = 5; ableMove[6] = ableMove[8] = ableMove[15] = ableMove[17] = true; }
+        //if (this.gameObject.name == komaname[2]) { Komakind = 10; ableMove[6] = ableMove[7] = ableMove[8] = ableMove[11] =ableMove[12] = ableMove[16] = true; }
+        //if (this.gameObject.name == komaname[3]) { Komakind = 50; ableMove[1] = ableMove[2] = ableMove[3] = ableMove[11] = ableMove[12] = true; }
+        //if (this.gameObject.name == komaname[4]) { Komakind = 100; ableMove[2] = ableMove[7] = ableMove[12] = ableMove[13] = ableMove[16] = ableMove[21] = ableMove[11] = ableMove[10] = true; }
+        //if (this.gameObject.name == komaname[5]) { Komakind = 500; ableMove[6] = ableMove[7] = ableMove[8] = ableMove[11] = ableMove[12] = ableMove[15] = ableMove[16] = ableMove[17] = true; }
+        //if (this.gameObject.name == komaname[6]) { Komakind = 1; ableMove[15] = ableMove[16] = ableMove[17] = true; }
+        //if (this.gameObject.name == komaname[7]) { Komakind = 5; ableMove[15] = ableMove[17] = ableMove[6] = ableMove[8] = true; }
+        //if (this.gameObject.name == komaname[8]) { Komakind = 10; ableMove[16] = ableMove[17] = ableMove[15] = ableMove[7] = ableMove[11]=ableMove[12] = true; }
+        //if (this.gameObject.name == komaname[9]) { Komakind = 50; ableMove[20] = ableMove[21] = ableMove[22] = ableMove[11] = ableMove[12] = true; }
+        //if (this.gameObject.name == komaname[10]) { Komakind = 100; ableMove[2] = ableMove[7] = ableMove[12] = ableMove[13] = ableMove[16] = ableMove[21] = ableMove[11] = ableMove[10] = true; }
+        //if (this.gameObject.name == komaname[11]) { Komakind = 500; ableMove[6] = ableMove[7] = ableMove[8] = ableMove[11] = ableMove[12] = ableMove[15] = ableMove[16] = ableMove[17] = true; }
 
     }
 
@@ -169,7 +285,83 @@ public class koma : MonoBehaviour
         return result;
     }
 
+   
+   public void ShowMove(int kind, int TP)
+    {
+        mapdata = cont.GetComponent<Mapdata>();
 
+        int indexnum;
+        Vector2 rela;
+        //int[] blockkomakind = new int[] { BLOCKKOMA_5, BLOCKKOMA_100, };
+             
+            for(int y = 0; y < 5; y++)
+            {
+                for (int x = 0; x < 5; x++) {
+                bool show = true;       //実際表示できるか判別
+                bool mapnotOn = false;  //自分の駒が乗って無いかを判別する
+                    rela = RetRelativeMatlix(x, y);
+                    indexnum = (y * 5) + x;
+                    if (indexnum == 12) continue;
+                    if (indexnum >= 13) indexnum = indexnum - 1;
+
+                    if (ableMove[indexnum] == true){ 
+                        if (LocalKomaPos.y + rela.y >= 8) continue;
+                        if (LocalKomaPos.y + rela.y <= 0) continue;
+                        if (LocalKomaPos.x + rela.x >= 8) continue;
+                        if (LocalKomaPos.x + rela.x <= 0) continue;
+
+                        if(TP == 1) { if (mapdata.map[(int)LocalKomaPos.x + (int)rela.x, (int)LocalKomaPos.y + (int)rela.y] <= 0) mapnotOn = true; }else if(TP == 2) { if (mapdata.map[(int)LocalKomaPos.x + (int)rela.x, (int)LocalKomaPos.y + (int)rela.y] >= 0) mapnotOn = true; }
+
+                    if (mapnotOn){
+                           
+                        if (Komakind == 50){
+                            if (indexnum <= 4){
+                                for (int k = 0; k < BLOCKKOMAKIND.Count; k++)
+                                {
+                                    int blockkoma = 0;
+                                    if (TP == 1) { blockkoma = (-1) * BLOCKKOMAKIND[k]; } else if (TP == 2) { blockkoma = BLOCKKOMAKIND[k]; }
+                                    if (mapdata.map[(int)LocalKomaPos.x, (int)LocalKomaPos.y + 1] == blockkoma) show = false;
+                                }
+                            }
+                        }
+
+                            if(Komakind == 100){
+                                if(indexnum == 2) { if (mapdata.map[(int)LocalKomaPos.x , (int)LocalKomaPos.y + 1] != 0) continue; }
+                                if(indexnum == 10) { if (mapdata.map[(int)LocalKomaPos.x - 1, (int)LocalKomaPos.y ] != 0) continue; }
+                                if(indexnum == 13) { if (mapdata.map[(int)LocalKomaPos.x + 1, (int)LocalKomaPos.y ] != 0) continue; }
+                                if(indexnum == 21) { if (mapdata.map[(int)LocalKomaPos.x , (int)LocalKomaPos.y - 1] != 0) continue; }
+                            }
+                          
+                        if (show == true){
+                            transform.Find("select" + indexnum.ToString()).gameObject.SetActive(true);
+                        }
+                        }
+                    } 
+                    }
+            }
+
+       
+       
+
+       
+       
+
+    }
+    
+
+
+
+
+
+
+
+
+
+        
+
+
+       
+        /*
 
     public void ShowMove(int kind, int TP)
     {
@@ -177,6 +369,9 @@ public class koma : MonoBehaviour
 
         int indexnum;
         Vector2 rela;
+       
+
+
         if(TP == 1)
         {
             for(int y = 0; y < 5; y++)
@@ -264,29 +459,6 @@ public class koma : MonoBehaviour
        
 
     }
-
-   /*
-     public void KomaMove(GameObject toMovekomaobj, GameObject selectpoint)
-    {
-        Vector3 Movepoint = Vector3.zero;
-
-        float tomovepointZ = -1f;
-
-        int x, y;
-
-        x = changePoint.ToLocalPoint(selectpoint.transform.position.x);
-        y = changePoint.ToLocalPoint(selectpoint.transform.position.y);
-
-
-        Movepoint.x = changePoint.ToWorldPoint(x);
-        Movepoint.y = changePoint.ToWorldPoint(y);
-
-        Movepoint.z = tomovepointZ;
-
-        toMovekomaobj.transform.position = Movepoint;
-
-
-    }
     */
-
+  
 }
