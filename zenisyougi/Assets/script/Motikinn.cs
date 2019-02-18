@@ -146,6 +146,7 @@ public class Motikinn : MonoBehaviour
     {
         mapdata = cont.GetComponent<Mapdata>();
         int xynum;
+        bool nifu = false;
         for (int y = 1; y < 8; y++) {
             for (int x = 1; x < 8; x++)
             {
@@ -153,6 +154,18 @@ public class Motikinn : MonoBehaviour
                 {
                     if (y >= 7 && (kind == 50 || kind == 1)) break;
                     if (y >= 6 && (kind == 50)) break;
+                    if (kind == 1)
+                    {
+                        for (int k = 1; k < 8; k++)
+                        {
+                            if (mapdata.map[x, k] == 1) nifu = true;
+                        }
+                        if(nifu == true)
+                        {
+                            nifu = false;
+                            continue;
+                        }
+                    }
                     if (mapdata.map[x, y] == 0)
                     {
                         xynum = ReturnXYnum(x, y);
@@ -162,6 +175,18 @@ public class Motikinn : MonoBehaviour
                 {
                     if (y <= 1 && (kind == 50 || kind == 1)) break;
                     if (y <= 2 && (kind == 50)) break;
+                    if (kind == 1)
+                    {
+                        for (int k = 1; k < 8; k++)
+                        {
+                            if (mapdata.map[x, k] == -1) nifu = true;
+                        }
+                        if (nifu == true)
+                        {
+                            nifu = false;
+                            continue;
+                        }
+                    }
                     if (mapdata.map[x,y] == 0)
                     {
                         xynum = ReturnXYnum(x, y);

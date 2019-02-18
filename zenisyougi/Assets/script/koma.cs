@@ -133,7 +133,7 @@ public class koma : MonoBehaviour
     }
 
     private void KomadataSet(int kind){
-        if (kind == 10 || kind == 100) this.blockflg = true;
+        if (kind == 5 || kind == 100) this.blockflg = true;
         if (kind == 50) this.Junpflg = true;
 
 
@@ -200,7 +200,7 @@ public class koma : MonoBehaviour
 
                             if(Komakind == 50)
                             {
-                                if (mapdata.map[(int)LocalKomaPos.x, (int)LocalKomaPos.y + 1] == -10 || mapdata.map[(int)LocalKomaPos.x, (int)LocalKomaPos.y + 1] == -100) { if (indexnum <= 4) continue; }
+                                if (mapdata.map[(int)LocalKomaPos.x, (int)LocalKomaPos.y + 1] == -5 || mapdata.map[(int)LocalKomaPos.x, (int)LocalKomaPos.y + 1] == -100) { if (indexnum <= 4) continue; }
                             }
                             if(Komakind == 100)
                             {
@@ -240,7 +240,7 @@ public class koma : MonoBehaviour
                         {
                             if(Komakind == 50)
                             {
-                                if (mapdata.map[(int)LocalKomaPos.x, (int)LocalKomaPos.y - 1] == 10 || mapdata.map[(int)LocalKomaPos.x, (int)LocalKomaPos.y - 1] == 100)if(indexnum >= 19) continue;
+                                if (mapdata.map[(int)LocalKomaPos.x, (int)LocalKomaPos.y - 1] == 5 || mapdata.map[(int)LocalKomaPos.x, (int)LocalKomaPos.y - 1] == 100)if(indexnum >= 19) continue;
                             }
                             if (Komakind == 100)
                             {
