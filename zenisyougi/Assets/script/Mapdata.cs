@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class Mapdata : MonoBehaviour
 {
 
-    public int[,] map = new int[8,8];
+    const int mapWidth = 8; //7*7なので。また、今後正方形であることは変更しないのでWidthのみの定義
+    public int[,] map = new int[mapWidth,mapWidth];
+
 
     /// <summary>
     /// index 0 ...1yen
@@ -43,9 +45,9 @@ public class Mapdata : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < 8; i++)
+        for(int i = 0; i < mapWidth; i++)
         {
-            for(int j = 0; j < 8; j++)
+            for(int j = 0; j < mapWidth; j++)
             {
                 map[i, j] = 0;
             }
@@ -54,11 +56,12 @@ public class Mapdata : MonoBehaviour
         {
             P1motikinn[i] = 0;
             P2motikinn[i] = 0;
-
         }
+
         P1motikinnsum = 0;
         P2motikinnsum = 0;
 
+        //初期位置のデータセット
         map[1, 2] = 1;
         map[2, 2] = 5;
         map[3, 2] = 10;
