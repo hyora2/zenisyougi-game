@@ -189,7 +189,7 @@ public class Gamecontroller : MonoBehaviour
 
                             if (turnplayer == 1)
                             {
-                                    if (mapdata.P1motikinn[motikinn.GetKomakindToIndexnum(motikinn.GetKomakind())] >= 1)
+                                    if (mapdata.P1motikinn[mapdata.GetKomakindToIndexnum[motikinn.GetKomakind()]] >= 1)
                                     {
                                         motikinn.MotikinnShowMove(motikinn.GetKomakind(), turnplayer);
                                         komaobj.transform.Find("motikinnselect").gameObject.SetActive(true);
@@ -416,7 +416,7 @@ public GameObject Get_Unit(Vector3 pos){
 
 
     public void MotikinnwoBaniUtu(int kind , int TP, GameObject selectpoint)
-    {
+    {//持ち金を場に打つ
         Vector3 UtuBasyo = Vector3.zero;
         int lpx, lpy;
 

@@ -6,8 +6,36 @@ using UnityEngine.UI;
 public class Mapdata : MonoBehaviour
 {
 
-    const int mapWidth = 8; //7*7なので。また、今後正方形であることは変更しないのでWidthのみの定義
+    const int mapWidth = 8; //7*7なので。ローカル座標をそのまま使えるように、1~7を使う。（0は使用しない）また、今後正方形であることは変更しないのでWidthのみの定義
+    public int GetmapWidth(){return mapWidth;}
     public int[,] map = new int[mapWidth,mapWidth];
+
+    public Dictionary<int, int> GetKomakindToIndexnum = new Dictionary<int, int>
+    {
+        { 1, 0},
+        {5, 1},
+        {10, 2},
+        {50, 3},
+        {100, 4},
+        {500, 5},
+    };
+
+    /// <summary>
+    /// index 0 ...1yen
+    ///       1 ...5yen
+    ///       2 ...10yen
+    ///       3 ...50
+    ///       4 ...100
+    ///       5 ...500
+    ///       6 ...sum
+    /// </summary>
+    public List<int[]> motikinnLIST = new List<int[]>
+    {
+        new int[7]{0,0,0,0,0,0,0},
+        new int[7]{0,0,0,0,0,0,0},
+
+    };
+
 
 
     /// <summary>
@@ -40,6 +68,8 @@ public class Mapdata : MonoBehaviour
     public List<GameObject> Kdatalist = new List<GameObject>();
 
     ToChangePoint toChangePoint;
+
+ 
 
 
     // Start is called before the first frame update

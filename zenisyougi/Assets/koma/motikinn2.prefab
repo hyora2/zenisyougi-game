@@ -903,7 +903,7 @@ GameObject:
   - component: {fileID: 7827496305389166212}
   - component: {fileID: 6415288119922814942}
   m_Layer: 0
-  m_Name: 2_50
+  m_Name: 50yen2(Clone)
   m_TagString: motikinn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1540,7 +1540,7 @@ GameObject:
   - component: {fileID: 5393694351644628711}
   - component: {fileID: 6404679962591068468}
   m_Layer: 0
-  m_Name: 2_100
+  m_Name: 100yen2(Clone)
   m_TagString: motikinn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2594,7 +2594,7 @@ GameObject:
   - component: {fileID: 5535158028622387998}
   - component: {fileID: 4079290913750927867}
   m_Layer: 0
-  m_Name: 2_1
+  m_Name: 1yen2(Clone)
   m_TagString: motikinn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2836,7 +2836,7 @@ GameObject:
   - component: {fileID: 3738090541067110467}
   - component: {fileID: 94243622514361936}
   m_Layer: 0
-  m_Name: 2_10
+  m_Name: 10yen2(Clone)
   m_TagString: motikinn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3236,7 +3236,7 @@ GameObject:
   - component: {fileID: 3868006364372386211}
   - component: {fileID: 7543368236690406291}
   m_Layer: 0
-  m_Name: 2_5
+  m_Name: 5yen2(Clone)
   m_TagString: motikinn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

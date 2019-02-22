@@ -3,104 +3,68 @@ using System.Collections.Generic;
 using UnityEngine;
 public class koma : MonoBehaviour
 {
+   [SerializeField] private string komaname;
+
     Vector3 WorldKomaPos;
     [SerializeField] Vector2 LocalKomaPos;
-    [SerializeField] int Komakind;
-    [SerializeField] int PorE;
-    [SerializeField] bool Junpflg;
-    [SerializeField] bool blockflg;
+    public Vector2 GetLocalKomaPos() { return LocalKomaPos; }
+
+    [SerializeField] int Komakind; 
+     public int GetKomakind() { return Komakind; }
+
+    [SerializeField] int PorE; 
+     public int GetPorE() { return PorE; }
+
     [SerializeField] bool[] ableMove = new bool[24];
 
-    private bool selectnow;
     GameObject cont;
     ToChangePoint changePoint;
     Mapdata mapdata;
+    KomaData komaData;
 
+    [SerializeField] int RelativeAreaW;
+   [SerializeField] int KomaAreacenterPoint;
+    int komaAreacenterIndex;
+   
+    private const int komakindZERO = 0;
 
-    private string[] komaname = new string[12];
+    private const int LONGRANGEKOMAKIND = 100;
 
-    private List<int> BLOCKKOMAKIND = new List<int>
-    {
-        5,
-        100,
-
-    };
-
-    private List<string> komaNames = new List<string>
-    {
-        "1yen1(Clone)",
-        "5yen1(Clone)",
-        "10yen1(Clone)",
-        "50yen1(Clone)",
-        "100yen1(Clone)",
-        "500yen1(Clone)",
-        "1yen2(Clone)",
-        "5yen2(Clone)",
-        "10yen2(Clone)",
-        "50yen2(Clone)",
-        "100yen2(Clone)",
-        "500yen2(Clone)",
-
-    };
-
-
+   
     private void Start()
     {
         cont = GameObject.Find("GameCont");
         changePoint = cont.GetComponent<ToChangePoint>();
         mapdata = cont.GetComponent<Mapdata>();
+        komaData = GetComponent<KomaData>();
 
-        selectnow = false;
+        KomaAreacenterPoint = komaData.GetCenterPoint();
+        RelativeAreaW = komaData.GetRelativeAreaWidth();
+        komaAreacenterIndex = (RelativeAreaW * (KomaAreacenterPoint - 1)) + (KomaAreacenterPoint - 1);
+
+       // ConstantSet();
+
         DataReset();
         WorldKomaPos = this.gameObject.transform.position;
 
         LocalKomaPos.x = changePoint.ToLocalPoint(WorldKomaPos.x);
         LocalKomaPos.y = changePoint.ToLocalPoint(WorldKomaPos.y);
+        komaname = this.gameObject.name;
+        PorE = komaData.PorESet(komaname);
 
-        KomanameSet();
-        PorESet();
-        KomakindSet();
-        KomadataSet(this.Komakind);
+        Komakind = komaData.KomakindSet(komaname);
+        KomaMovableDataSet(Komakind);
 
     }
 
+  
     private void DataReset() {
-        this.selectnow = false;
-        this.Komakind = 0;
-        this.blockflg = false;
-        this.Junpflg = false;
+        this.Komakind = komakindZERO;
         this.PorE = 0;
         for (int k = 0; k < 24; k++)
         {
             ableMove[k] = false;
         }
-
-    }
-
-    public int GetKomakind() {
-        return Komakind;
-    }
-
-    public int GetPorE() {
-        return PorE;
-    }
-
-    public bool GetJunpflg() {
-        return Junpflg;
-    }
-
-    public bool GetBlockflg() {
-        return blockflg;
-    }
-
-    public bool GetSelectNow()
-    {
-        return selectnow;
-    }
-
-    public Vector2 GetLocalKomaPos()
-    {
-        return LocalKomaPos;
     }
 
     public void SetLocalKomaPos(Vector2 lp)
@@ -109,121 +73,14 @@ public class koma : MonoBehaviour
         LocalKomaPos.y = lp.y;
     }
 
-    private void PorESet() {
-
-        for (int i = 0; i < 12; i++) {
-            if (i < 6) {
-                if (this.gameObject.name == komaname[i]) PorE = 1;
-            } else if (i >= 6 && i < 12) {
-                if (this.gameObject.name == komaname[i]) PorE = 2;
-            } else {
-                Debug.Log("name set error.");
-            }
-        }
-    }
-
-
-
-    private void KomanameSet() {
-        for (int i = 0; i < this.komaNames.Count; i++)
-        {
-            komaname[i] = komaNames[i];
-        }
-    }
-
-    private Dictionary<int, List<bool>> komaInfos = new Dictionary<int, List<bool>>
+    private void KomaMovableDataSet(int kind)
     {
-        {1,new List<bool>{
-        false,false,false,false,false,
-        false,true,true,true,false,
-        false,false,    false,false,
-        false,false,false,false,false,
-        false,false,false,false,false,
-        } },
-
-        {5,new List<bool>{
-        false,false,false,false,false,
-        false,true,false,true,false,
-        false,false,     false,false,
-        false,true,false,true,false,
-        false,false,false,false,false,
-        } },
-
-        {10,new List<bool>{
-        false,false,false,false,false,
-        false,true,true,true,false,
-        false,true,    true,false,
-        false,false,true,false,false,
-        false,false,false,false,false,
-        } },
-
-        {50,new List<bool>{
-        false,true,true,true,false,
-        false,false,false,false,false,
-        false,true,      true,false,
-        false,false,false,false,false,
-        false,false,false,false,false,
-        } },
-
-        {100,new List<bool>{
-        false,false,true,false,false,
-        false,false,true,false,false,
-        true, true,       true,true,
-        false,false,true,false,false,
-        false,false,true,false,false,
-        } },
-
-        {500,new List<bool>{
-        false,false,false,false,false,
-        false,true,true,true,false,
-        false,true,     true,false,
-        false,true,true,true,false,
-        false,false,false,false,false,
-        } },
-
-        {0,new List<bool>{
-        false,false,false,false,false,
-        false,false,false,false,false,
-        false,false,    false,false,
-        false,false,false,false,false,
-        false,false,false,false,false,
-        } },
-    };
-
-    private List<int> komaKinds = new List<int>
-    {
-        1,
-        5,
-        10,
-        50,
-        100,
-        500,
-    };
-
-
-
-
-    private void KomakindSet() {
-        for (int i = 0; i < komaname.Length; i++)
+        List<bool> ableMoveArea = komaData.komaMovableInfos[kind];
+        for(int i = 0; i < ableMoveArea.Count; i++)
         {
-            if (this.gameObject.name.Equals(komaname[i]))
-            {
-                // 移動可能なマスを定義する。
-                int key;
-                if (i >= (komaname.Length / 2)) { key = komaKinds[i - (komaname.Length / 2)]; } else { key = komaKinds[i]; }
-
-                this.Komakind = key;
-                List<bool> ableMoveArea = komaInfos[key];
-                for (int j = 0; j < ableMoveArea.Count; j++)
-                    ableMove[j] = ableMoveArea[j];
-            }
+            ableMove[i] = ableMoveArea[i];
         }
 
-    }
-
-    private void KomadataSet(int kind) {
-        if (kind == 5 || kind == 100) this.blockflg = true;
-        if (kind == 50) this.Junpflg = true;
     }
 
     private Dictionary<int, int> RelativeValue = new Dictionary<int, int>
@@ -253,78 +110,93 @@ public class koma : MonoBehaviour
         result.x = RelativeValue[x];
         result.y = (-1) * RelativeValue[y];
 
-
         if (TP == 2) result = result * (-1);    //turnprayerが2の時は180度回転
 
         return result;
     }
 
     private Dictionary<int, Vector2> CalculationValue = new Dictionary<int, Vector2>
-    {//<int, int[,]> == <indexnum, [x value, y value]>
-       
-        {2,new Vector2(0,1)},
-        {10,new Vector2(-1,0)},
-        {13,new Vector2(1, 0)},
-        {21,new Vector2(0, -1)},
+    {//<int, Vector2> == <indexnum, [x value, y value]>
 
+        {0, new Vector2(-1f, 1f)},
+        {2,new Vector2(0f,1f)},
+        {4,new Vector2(1f, 1f)},
+        {10,new Vector2(-1f,0f)},
+        {13,new Vector2(1f, 0f)},
+        {19, new Vector2(-1f, -1f)},
+        {21,new Vector2(0f, -1f)},
+        {23, new Vector2(1f, -1f)},
 
     };
 
-
+    private List<int> LongRengeMoveIndexnum = new List<int>
+    {
+        0, 
+        2,
+        4,
+        10,
+        13,
+        19,
+        21,
+        23,
+    };
 
 
     private bool JudgmentFlg(Vector2 rela, int LPX, int LPY, int kind, int TP, int indexnum)
     {
-        if (TP == 1 && (mapdata.map[LPX + (int)rela.x, LPY + (int)rela.y] > 0)){ return false; }else if(TP == 2 && (mapdata.map[LPX + (int)rela.x, LPY + (int)rela.y] < 0)) { return false; }
+        if (TP == 1 && (mapdata.map[LPX + (int)rela.x, LPY + (int)rela.y] > komakindZERO)){ return false; }else if(TP == 2 && (mapdata.map[LPX + (int)rela.x, LPY + (int)rela.y] < komakindZERO)) { return false; }
 
-        if (kind == 50)
+        //もしJUMPKOMAKINDが2種類以上になるなら、ここにfor文を追加
+        if (kind == komaData.JUMPKOMAKINDLIST[0])
         {
-            for(int k = 0; k < BLOCKKOMAKIND.Count; k++)
+            for(int k = 0; k < komaData.BLOCKKOMAKINDLIST.Count; k++)
             {
                 int variable = 1;
-                int bkkind = BLOCKKOMAKIND[k];
+                int bkkind = komaData.BLOCKKOMAKINDLIST[k];
                 if (TP == 1) { bkkind = (-1) * bkkind; }else { variable = -1;  }
                 if (mapdata.map[LPX, LPY + variable] == bkkind || mapdata.map[LPX, LPY + variable] == bkkind) { if (indexnum <= 4) return false; }
             }
         }
-        if (kind == 100)
+        //もしLONGRANGEKOMAKINDが2種類以上になるなら、ここにfor文を追加
+        if (kind == LONGRANGEKOMAKIND)
         {
-            if (indexnum == 2 || indexnum == 10 || indexnum == 13 || indexnum == 21)
+            for (int i = 0; i < LongRengeMoveIndexnum.Count; i++)
             {
-                Vector2 Cval = CalculationValue[indexnum];
-                if (TP == 2) Cval = (-1) * Cval;
-                if (mapdata.map[LPX + (int)Cval.x, LPY + (int)Cval.y] != 0) return false;
+                if (indexnum == LongRengeMoveIndexnum[i])
+                {
+                    Vector2 Cval = CalculationValue[indexnum];
+                    if (TP == 2) Cval = (-1) * Cval;
+                    if (mapdata.map[LPX + (int)Cval.x, LPY + (int)Cval.y] != komakindZERO) return false;
+                }
             }
         }
         return true;
     }
 
   
-
     public void ShowMove(int kind, int TP)
     {
         mapdata = cont.GetComponent<Mapdata>();
 
         int indexnum;
         Vector2 rela;
-            for(int y = 0; y < 5; y++)
+            for(int y = 0; y < RelativeAreaW; y++)
             {
-                for (int x = 0; x < 5; x++) {
+                for (int x = 0; x < RelativeAreaW; x++) {
                     bool showflg = true;
 
                     rela = RetRelativeMatlix(x, y, TP);
-                    indexnum = (y * 5) + x;
+                    indexnum = (y * RelativeAreaW) + x;
 
-                    if (indexnum == 12) continue;
-                    if (indexnum >= 13) indexnum--;
+                    if (indexnum == komaAreacenterIndex) continue;
+                    if (indexnum >= komaAreacenterIndex + 1) indexnum--;
                                   
                     if (ableMove[indexnum] == true){
-                        if (LocalKomaPos.y + rela.y >= 8) continue;
+                        if (LocalKomaPos.y + rela.y >= mapdata.GetmapWidth()) continue;
                         if (LocalKomaPos.y + rela.y <= 0) continue;
-                        if (LocalKomaPos.x + rela.x >= 8) continue;
+                        if (LocalKomaPos.x + rela.x >= mapdata.GetmapWidth()) continue;
                         if (LocalKomaPos.x + rela.x <= 0) continue;
 
-                   
                        showflg = JudgmentFlg(rela, (int)LocalKomaPos.x, (int)LocalKomaPos.y, kind, TP, indexnum);
 
                         if (showflg == true)
@@ -337,9 +209,8 @@ public class koma : MonoBehaviour
 
     }
 
-
     /// <summary>
-    /// 持ち金の打つ範囲を消す関数。
+    /// 打てる範囲を消す関数。
     /// </summary>
     /// <param name="komaobj">Komaobj.</param>
 
@@ -351,7 +222,5 @@ public class koma : MonoBehaviour
         }
 
     }
-
-
 
 }
