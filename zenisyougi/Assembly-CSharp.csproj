@@ -61,9 +61,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\script\ChangeButton.cs" />
+    <Compile Include="Assets\script\DebugMapdata.cs" />
     <Compile Include="Assets\script\FadeScript.cs" />
     <Compile Include="Assets\script\Gamecontroller.cs" />
     <Compile Include="Assets\script\koma.cs" />
+    <Compile Include="Assets\script\KomaData.cs" />
     <Compile Include="Assets\script\Mapdata.cs" />
     <Compile Include="Assets\script\memo.cs" />
     <Compile Include="Assets\script\Motikinn.cs" />

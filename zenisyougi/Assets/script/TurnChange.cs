@@ -22,12 +22,10 @@ public class TurnChange : MonoBehaviour
 
     private void Update()
     {
-       
         if (transform.position.x >= 0f && transform.position.x <= 10f)
         {
             transform.position += new Vector3( -speed * Time.deltaTime,  speed * Time.deltaTime, 0f);
         }
-
     }
 
 

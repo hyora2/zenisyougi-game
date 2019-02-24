@@ -6,7 +6,21 @@ using UnityEngine.UI;
 public class Mapdata : MonoBehaviour
 {
 
-    public int[,] map = new int[8,8];
+    const int mapWidth = 8; //7*7なので。ローカル座標をそのまま使えるように、1~7を使う。（0は使用しない）また、今後正方形であることは変更しないのでWidthのみの定義
+    public int GetmapWidth(){return mapWidth;}
+    public int[,] map = new int[mapWidth,mapWidth];
+
+    public Dictionary<int, int> GetKomakindToIndexnum = new Dictionary<int, int>
+    {
+        { 1, 0},
+        {5, 1},
+        {10, 2},
+        {50, 3},
+        {100, 4},
+        {500, 5},
+        {-1, 6}, //-1のkeyをsumのインデックスナンバーとする
+
+    };
 
     /// <summary>
     /// index 0 ...1yen
@@ -14,51 +28,39 @@ public class Mapdata : MonoBehaviour
     ///       2 ...10yen
     ///       3 ...50
     ///       4 ...100
+    ///       5 ...500
+    ///       6 ...sum
     /// </summary>
-    public int[] P1motikinn = new int[6];
-    public int P1motikinnsum;
-    public int[] P2motikinn = new int[6];
-    public int P2motikinnsum;
 
-    public Text P1Text1;
-    public Text P1Text5;
-    public Text P1Text10;
-    public Text P1Text50;
-    public Text P1Text100;
-    public Text P1sum;
+    public Text[] Texts1 = new Text[7];
+    public Text[] Texts2 = new Text[7];
 
-    public Text P2Text1;
-    public Text P2Text5;
-    public Text P2Text10;
-    public Text P2Text50;
-    public Text P2Text100;
-    public Text P2sum;
+    //public int[] P1motikinn = new int[7];
+   // public int[] P2motikinn = new int[7];
 
-
+    public int[,] motikinn = new int[2, 7];
+  
     public List<GameObject> Kdatalist = new List<GameObject>();
 
     ToChangePoint toChangePoint;
 
-
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < 8; i++)
+        for(int i = 0; i < mapWidth; i++)
         {
-            for(int j = 0; j < 8; j++)
+            for(int j = 0; j < mapWidth; j++)
             {
                 map[i, j] = 0;
             }
         }
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 2; i++)
         {
-            P1motikinn[i] = 0;
-            P2motikinn[i] = 0;
-
+            for (int j = 0; j < 7; j++)
+                motikinn[i, j] = 0;
         }
-        P1motikinnsum = 0;
-        P2motikinnsum = 0;
 
+        //初期位置のデータセット
         map[1, 2] = 1;
         map[2, 2] = 5;
         map[3, 2] = 10;
@@ -88,27 +90,19 @@ public class Mapdata : MonoBehaviour
 
     public void TextUpdate()
     {
-        P1Text1.text = P1motikinn[0].ToString();
-        P1Text5.text = P1motikinn[1].ToString();
-        P1Text10.text = P1motikinn[2].ToString();
-        P1Text50.text = P1motikinn[3].ToString();
-        P1Text100.text = P1motikinn[4].ToString();
-        P1sum.text = P1motikinnsum.ToString();
-
-        P2Text1.text = P2motikinn[0].ToString();
-        P2Text5.text = P2motikinn[1].ToString();
-        P2Text10.text = P2motikinn[2].ToString();
-        P2Text50.text = P2motikinn[3].ToString();
-        P2Text100.text = P2motikinn[4].ToString();
-        P2sum.text = P2motikinnsum.ToString();
-
+        for(int i = 0; i < 7; i++)
+        {
+            if (i == 5) continue;
+            Texts1[i].text = motikinn[0,i].ToString();
+            Texts2[i].text = motikinn[1,i].ToString();
+        }
 
     }
 
     public void Motikinnsum()
     {
-        P1motikinnsum = P1motikinn[0] + (5 * P1motikinn[1]) + (10 * P1motikinn[2]) + (50 * P1motikinn[3]) + (100 * P1motikinn[4]) + (500 * P1motikinn[5]);
-        P2motikinnsum = P2motikinn[0] + (5 * P2motikinn[1]) + (10 * P2motikinn[2]) + (50 * P2motikinn[3]) + (100 * P2motikinn[4]) + (500 * P2motikinn[5]);
+        motikinn[0, 6] = motikinn[0,0] + (5 * motikinn[0,1]) + (10 * motikinn[0,2]) + (50 * motikinn[0,3]) + (100 * motikinn[0,4]) + (500 * motikinn[0,5]);
+        motikinn[1,6] = motikinn[1,0] + (5 * motikinn[1,1]) + (10 * motikinn[1,2]) + (50 * motikinn[1,3]) + (100 * motikinn[1,4]) + (500 * motikinn[1,5]);
 
     }
 

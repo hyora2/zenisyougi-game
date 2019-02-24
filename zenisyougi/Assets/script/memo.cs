@@ -652,4 +652,106 @@ public class memo : MonoBehaviour
      *   
 
      */
+
+
+
+    /*
+
+public void ShowMove(int kind, int TP)
+{
+    mapdata = cont.GetComponent<Mapdata>();
+
+    int indexnum;
+    Vector2 rela;
+
+
+
+    if(TP == 1)
+    {
+        for(int y = 0; y < 5; y++)
+        {
+            for (int x = 0; x < 5; x++) {
+                rela = RetRelativeMatlix(x, y);
+                indexnum = (y * 5) + x;
+                if (indexnum == 12) continue;
+                if (indexnum >= 13) indexnum = indexnum - 1;
+
+                if (ableMove[indexnum] == true)
+                {
+
+                    if (LocalKomaPos.y + rela.y >= 8) continue;
+                    if (LocalKomaPos.y + rela.y <= 0) continue;
+                    if (LocalKomaPos.x + rela.x >= 8) continue;
+                    if (LocalKomaPos.x + rela.x <= 0) continue;
+
+                    if (mapdata.map[(int)LocalKomaPos.x + (int)rela.x, (int)LocalKomaPos.y + (int)rela.y] <= 0)
+                    {
+
+                        if(Komakind == 50)
+                        {
+                            if (mapdata.map[(int)LocalKomaPos.x, (int)LocalKomaPos.y + 1] == -5 || mapdata.map[(int)LocalKomaPos.x, (int)LocalKomaPos.y + 1] == -100) { if (indexnum <= 4) continue; }
+                        }
+                        if(Komakind == 100)
+                        {
+                            if(indexnum == 2) { if (mapdata.map[(int)LocalKomaPos.x , (int)LocalKomaPos.y + 1] != 0) continue; }
+                            if(indexnum == 10) { if (mapdata.map[(int)LocalKomaPos.x - 1, (int)LocalKomaPos.y ] != 0) continue; }
+                            if(indexnum == 13) { if (mapdata.map[(int)LocalKomaPos.x + 1, (int)LocalKomaPos.y ] != 0) continue; }
+                            if(indexnum == 21) { if (mapdata.map[(int)LocalKomaPos.x , (int)LocalKomaPos.y - 1] != 0) continue; }
+
+                        }
+
+                        transform.Find("select" + indexnum.ToString()).gameObject.SetActive(true);
+                    }
+                } 
+                }
+        }
+
+    }
+    else if(TP == 2)
+    {
+        for (int y = 0; y < 5; y++)
+        {
+            for (int x = 0; x < 5; x++)
+            {
+                rela = RetRelativeMatlix(x, y);
+                indexnum = y * 5 + x;
+                if (indexnum == 12) continue;
+                if (indexnum >= 13) indexnum--;
+
+                if (ableMove[indexnum] == true)
+                {
+                    if (LocalKomaPos.y + rela.y >= 8)  continue;
+                    if (LocalKomaPos.y + rela.y <= 0) continue;
+                    if (LocalKomaPos.x + rela.x >= 8) continue;
+                    if (LocalKomaPos.x + rela.x <= 0) continue;
+
+                    if (mapdata.map[(int)LocalKomaPos.x + (int)rela.x, (int)LocalKomaPos.y + (int)rela.y] >= 0)
+                    {
+                        if(Komakind == 50)
+                        {
+                            if (mapdata.map[(int)LocalKomaPos.x, (int)LocalKomaPos.y - 1] == 5 || mapdata.map[(int)LocalKomaPos.x, (int)LocalKomaPos.y - 1] == 100)if(indexnum >= 19) continue;
+                        }
+                        if (Komakind == 100)
+                        {
+                            if (indexnum == 2) { if (mapdata.map[(int)LocalKomaPos.x, (int)LocalKomaPos.y + 1] != 0) continue; }
+                            if (indexnum == 10) { if (mapdata.map[(int)LocalKomaPos.x - 1, (int)LocalKomaPos.y] != 0) continue; }
+                            if (indexnum == 13) { if (mapdata.map[(int)LocalKomaPos.x + 1, (int)LocalKomaPos.y] != 0) continue; }
+                            if (indexnum == 21) { if (mapdata.map[(int)LocalKomaPos.x, (int)LocalKomaPos.y - 1] != 0) continue; }
+
+                        }
+
+                        transform.Find("select" + indexnum.ToString()).gameObject.SetActive(true);
+                    }
+                }
+            }
+        }
+
+    }
+
+
+
+
+
+}
+*/
 }

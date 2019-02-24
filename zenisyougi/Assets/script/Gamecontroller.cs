@@ -9,10 +9,11 @@ public class Gamecontroller : MonoBehaviour
 
     public int turnplayer;
     public int AmountOfWin;
+    private int MotikinnSumIndexnum;
 
     koma komadata;
 
-    ToChangePoint changePoint;
+    ToChangePoint changePoint;//座標変換用クラス
     public GameObject selectedobj;
     Mapdata mapdata;
     SetPosition setP;
@@ -29,7 +30,6 @@ public class Gamecontroller : MonoBehaviour
     public GameObject p1win;
     public GameObject p2win;
 
-
     private void Start()
     {
         turnplayer = 1;
@@ -37,6 +37,8 @@ public class Gamecontroller : MonoBehaviour
         mapdata = GetComponent<Mapdata>();
         setP = GetComponent<SetPosition>();
         AmountOfWin = 171;
+        MotikinnSumIndexnum = mapdata.GetKomakindToIndexnum[-1];
+
         /*
         turnChangeObj = GameObject.Find("TurnChangeObj");
         tc = turnChangeObj.GetComponent<TurnChange>();
@@ -47,26 +49,21 @@ public class Gamecontroller : MonoBehaviour
         fade = fadeoutOBJ.GetComponent<FadeScript>();
         gameset = false;
 
-
     }
 
-    
 
     private void Update()
     {
-        if (gameset == true) return;
-        if ((mapdata.P1motikinnsum >= AmountOfWin) ||(mapdata.P2motikinnsum >= AmountOfWin))
-        {
-            if ((mapdata.P1motikinnsum >= AmountOfWin) && (mapdata.P2motikinnsum >= AmountOfWin)) GameSet(0);
-            if((mapdata.P1motikinnsum >= AmountOfWin) && (mapdata.P2motikinnsum < AmountOfWin))
+        if (gameset == true) return; //勝負が着いた時updateを止める
+        if (mapdata.motikinn[0, MotikinnSumIndexnum] >= AmountOfWin || mapdata.motikinn[1, MotikinnSumIndexnum] >= AmountOfWin) {
+            if ((mapdata.motikinn[0, MotikinnSumIndexnum] >= AmountOfWin) && (mapdata.motikinn[1, MotikinnSumIndexnum] >= AmountOfWin)) { GameSet(0); }
+            for (int i = 0; i < 2; i++)
             {
-                GameSet(1);
-            }else if((mapdata.P1motikinnsum < AmountOfWin) && (mapdata.P2motikinnsum >= AmountOfWin))
-            {
-                GameSet(2);
+                if (mapdata.motikinn[i, MotikinnSumIndexnum] >= AmountOfWin)  GameSet(i + 1);
             }
-        }
 
+        }
+       
         GameObject komaobj = Getclickobj();
         if(komaobj != null){
             if (((komaobj.tag != "toMove" )&&(komaobj.tag != "motikinn")) &&(komaobj.tag != "motikinnToMove"))
@@ -137,8 +134,10 @@ public class Gamecontroller : MonoBehaviour
                     }
                     selectedobj = null;
                     //ここにターン開始時の処理
+
                     //tc.MoveTurnObj(turnplayer);
 
+                   // PullOutProcess(turnplayer); //なぜかめちゃくちゃ重くなるのでこのまま
                     if(turnplayer == 1)
                     {//駒の自主撤退
                         for(int y = 7; y >= 6; y--)
@@ -152,7 +151,6 @@ public class Gamecontroller : MonoBehaviour
                                 if (mapdata.map[x, y] == 50) ReturnKome(x, y);
                             }
                         }
-
                     }
                     else if(turnplayer == 2)
                     {
@@ -166,11 +164,9 @@ public class Gamecontroller : MonoBehaviour
                                 }
                                 if (mapdata.map[x, y] == -50) ReturnKome(x, y);
                             }
-
                         }
 
                     }
-
 
                 }
             }else if (komaobj.tag == "motikinn")
@@ -187,24 +183,13 @@ public class Gamecontroller : MonoBehaviour
                             Ko = selectedobj.GetComponent<Motikinn>();
                             Ko.InvisibleMove();
 
-                            if (turnplayer == 1)
-                            {
-                                    if (mapdata.P1motikinn[motikinn.GetKomakindToIndexnum(motikinn.GetKomakind())] >= 1)
+                          
+                                    if (mapdata.motikinn[(turnplayer - 1), mapdata.GetKomakindToIndexnum[motikinn.GetKomakind()]] >= 1)
                                     {
                                         motikinn.MotikinnShowMove(motikinn.GetKomakind(), turnplayer);
                                         komaobj.transform.Find("motikinnselect").gameObject.SetActive(true);
                                     }
-                                
-                            }else if (turnplayer == 2)
-                            {                            
-                                    if (mapdata.P2motikinn[motikinn.GetKomakindToIndexnum(motikinn.GetKomakind())] >= 1)
-                                    {
-                                        motikinn.MotikinnShowMove(motikinn.GetKomakind(), turnplayer);
-                                    komaobj.transform.Find("motikinnselect").gameObject.SetActive(true);
-                                }
-                                
-                            }
-
+                          
 
                             selectedobj = null;
                         }else if(selectedobj.tag != "motikinn")
@@ -219,25 +204,13 @@ public class Gamecontroller : MonoBehaviour
                     }
                     selectedobj = komaobj;
                     //ここに打てる場所のshowmove。
-                    if(turnplayer == 1)
-                    {
-                        if (mapdata.P1motikinn[motikinn.GetKomakindToIndexnum(motikinn.GetKomakind())] >= 1)
+
+                        if (mapdata.motikinn[(turnplayer -1), motikinn.GetKomakindToIndexnum[motikinn.GetKomakind()]] >= 1)
                         {
                             komaobj.transform.Find("motikinnselect").gameObject.SetActive(true);
                             motikinn.MotikinnShowMove(motikinn.GetKomakind(), turnplayer);
                         }
-
-                    }
-                    else if(turnplayer == 2)
-                    {
-                        if (mapdata.P2motikinn[motikinn.GetKomakindToIndexnum(motikinn.GetKomakind())] >= 1)
-                        {
-                            komaobj.transform.Find("motikinnselect").gameObject.SetActive(true);
-                            motikinn.MotikinnShowMove(motikinn.GetKomakind(), turnplayer);
-                        }
-                    }
-
-                   // Debug.Log(motikinn.GetKomakind());
+                    
                 }
 
             }
@@ -251,15 +224,6 @@ public class Gamecontroller : MonoBehaviour
             Vector2 clickpoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D collition2D = Physics2D.OverlapPoint(clickpoint);          
             if(collition2D){
-                /*
-                if(selectedobj != null)
-                {
-                    koma Ko;
-                    Ko = selectedobj.GetComponent<koma>();
-                    Ko.InvisibleMove(selectedobj);
-                    selectedobj = null;
-                }
-                */
                 result = collition2D.transform.gameObject;
             }
             else
@@ -283,10 +247,47 @@ public class Gamecontroller : MonoBehaviour
             }
         }
         return result;
-
     }
 
-    public void ReturnKome(int x, int y)
+    /*
+    public void PullOutProcess(int TP)
+    {
+        if (TP == 1)
+        {//駒の自主撤退
+            for (int y = 7; y >= 6; y--)
+            {
+                for (int x = 0; x < 8; x++)
+                {
+                    if (y != 6)
+                    {
+                        if (mapdata.map[x, y] == 1) ReturnKome(x, y);
+                    }
+                    if (mapdata.map[x, y] == 50) ReturnKome(x, y);
+                }
+            }
+        }
+        else if (TP == 2)
+        {
+            for (int y = 1; y <= 2; y++)
+            {
+                for (int x = 0; x < 8; x++)
+                {
+                    if (y != 2)
+                    {
+                        if (mapdata.map[x, y] == -1) ReturnKome(x, y);
+                    }
+                    if (mapdata.map[x, y] == -50) ReturnKome(x, y);
+                }
+            }
+
+        }
+
+    }
+    */
+
+
+
+    private void ReturnKome(int x, int y)
     {
         GameObject game;
         Vector2 lp;
@@ -296,10 +297,9 @@ public class Gamecontroller : MonoBehaviour
         mapdata.map[x, y] = 0;
         TakeKoma(game);
 
-
     }
 
-    public void KomaMove(GameObject preobj,GameObject selectpoint)
+    private void KomaMove(GameObject preobj,GameObject selectpoint)
     {
         Vector3 Movepoint = Vector3.zero;
 
@@ -336,7 +336,7 @@ public class Gamecontroller : MonoBehaviour
           
     }
 
-    public void MoveMapdataUpdate(int preLPx, int preLPy, int toLPx, int toLpy, int komakind, int tp)
+    private void MoveMapdataUpdate(int preLPx, int preLPy, int toLPx, int toLpy, int komakind, int tp)
     {
         int k = 0;
 
@@ -346,18 +346,8 @@ public class Gamecontroller : MonoBehaviour
         mapdata.map[toLPx, toLpy] = k;
     }
 
-    /*
-public GameObject Get_Unit(Vector3 pos){
-        for (int i = 0; i < UnitObj.Count; i++){
-            if(UnitObj[i].transform.position == pos){
-                return UnitObj[i];
-            }
-        }
-        return null;
-    }
-*/
-
-    public GameObject Get_komadataFromList(Vector2 lp)
+  
+    private GameObject Get_komadataFromList(Vector2 lp)
     {
         keeplistnumber = -1;
         for(int i = 0; i < mapdata.Kdatalist.Count; i++)
@@ -372,7 +362,7 @@ public GameObject Get_Unit(Vector3 pos){
 
     }
 
-    public void TakeKoma(GameObject torarerukoma)
+    private void TakeKoma(GameObject torarerukoma)
     {
         //ここにmotikinn増加処理
         AddMotikinn(torarerukoma.GetComponent<koma>().GetKomakind());
@@ -385,38 +375,15 @@ public GameObject Get_Unit(Vector3 pos){
 
     }
 
-    public void AddMotikinn(int kind)
+    private void AddMotikinn(int kind)
     {
-        switch (kind)
-        {
-            case 1:
-                if(turnplayer == 1) { mapdata.P1motikinn[0]++; }else if(turnplayer == 2) { mapdata.P2motikinn[0]++; } else { }
-                break;
-            case 5:
-                if(turnplayer == 1) { mapdata.P1motikinn[1]++; }else if(turnplayer == 2) { mapdata.P2motikinn[1]++; } else { }
-                break;
-            case 10:
-                if(turnplayer == 1) { mapdata.P1motikinn[2]++; }else if(turnplayer == 2) { mapdata.P2motikinn[2]++; } else { }
-                break;
-            case 50:
-                if(turnplayer == 1) { mapdata.P1motikinn[3]++; }else if(turnplayer == 2) { mapdata.P2motikinn[3]++; } else { }
-                break;
-            case 100:
-                if(turnplayer == 1) { mapdata.P1motikinn[4]++; }else if(turnplayer == 2) { mapdata.P2motikinn[4]++; } else { }
-                break;
-            case 500:
-                if(turnplayer == 1) { mapdata.P1motikinn[5]++; }else if(turnplayer == 2) { mapdata.P2motikinn[5]++; } else { }
-                break;
-            default:
-                break;
-
-        }
+        int MotikinnlistIndex = mapdata.GetKomakindToIndexnum[kind];
+        mapdata.motikinn[(turnplayer - 1), MotikinnlistIndex]++;
 
     }
 
-
-    public void MotikinnwoBaniUtu(int kind , int TP, GameObject selectpoint)
-    {
+    private void MotikinnwoBaniUtu(int kind , int TP, GameObject selectpoint)
+    {//持ち金を場に打つ
         Vector3 UtuBasyo = Vector3.zero;
         int lpx, lpy;
 
@@ -432,33 +399,10 @@ public GameObject Get_Unit(Vector3 pos){
         mapdata.TextUpdate();
     }
 
-    public void DisMotikinn(int kind)
+    private void DisMotikinn(int kind)
     {
-        switch (kind)
-        {
-            case 1:
-                if (turnplayer == 1) { mapdata.P1motikinn[0]--; } else if (turnplayer == 2) { mapdata.P2motikinn[0]--; } else { }
-                break;
-            case 5:
-                if (turnplayer == 1) { mapdata.P1motikinn[1]--; } else if (turnplayer == 2) { mapdata.P2motikinn[1]--; } else { }
-                break;
-            case 10:
-                if (turnplayer == 1) { mapdata.P1motikinn[2]--; } else if (turnplayer == 2) { mapdata.P2motikinn[2]--; } else { }
-                break;
-            case 50:
-                if (turnplayer == 1) { mapdata.P1motikinn[3]--; } else if (turnplayer == 2) { mapdata.P2motikinn[3]--; } else { }
-                break;
-            case 100:
-                if (turnplayer == 1) { mapdata.P1motikinn[4]--; } else if (turnplayer == 2) { mapdata.P2motikinn[4]--; } else { }
-                break;
-            case 500:
-                if (turnplayer == 1) { mapdata.P1motikinn[5]--; } else if (turnplayer == 2) { mapdata.P2motikinn[5]--; } else { }
-                break;
-            default:
-                break;
-
-
-        }
+        int MotikinnlistIndex = mapdata.GetKomakindToIndexnum[kind];
+        mapdata.motikinn[(turnplayer - 1), MotikinnlistIndex]--;
 
     }
 
@@ -477,186 +421,5 @@ public GameObject Get_Unit(Vector3 pos){
       
     }
 
-
-    public void Change1Up1()
-    {
-        if (turnplayer != 1) return;
-        if (mapdata.P1motikinn[0] < 5) return;
-        if (mapdata.P1motikinn[1] >= 10) return;
-        mapdata.P1motikinn[0] = mapdata.P1motikinn[0] - 5;
-        mapdata.P1motikinn[1]++;
-        mapdata.TextUpdate();
-        return;
-    }
-
-    public void Break5_1()
-    {
-        if (turnplayer != 1) return;
-        if (mapdata.P1motikinn[1] <= 0) return;
-        if (mapdata.P1motikinn[0] >= 10) return;
-        mapdata.P1motikinn[1]--;
-        mapdata.P1motikinn[0] = mapdata.P1motikinn[0] + 5;
-        mapdata.TextUpdate();
-        return;
-    }
-
-    public void Change5Up1()
-    {
-        if (turnplayer != 1) return;
-        if (mapdata.P1motikinn[1] < 2) return;
-        if (mapdata.P1motikinn[2] >= 10) return;
-        mapdata.P1motikinn[1] = mapdata.P1motikinn[1] - 2;
-        mapdata.P1motikinn[2]++;
-        mapdata.TextUpdate();
-        return;
-    }
-
-    public void Break10_1()
-    {
-        if (turnplayer != 1) return;
-        if (mapdata.P1motikinn[2] <= 0) return;
-        if (mapdata.P1motikinn[1] >= 10) return;
-        mapdata.P1motikinn[2]--;
-        mapdata.P1motikinn[1] = mapdata.P1motikinn[1] + 2;
-        mapdata.TextUpdate();
-        return;
-    }
-
-    public void Change10Up1()
-    {
-        if (turnplayer != 1) return;
-        if (mapdata.P1motikinn[2] < 5) return;
-        if (mapdata.P1motikinn[3] >= 10) return;
-        mapdata.P1motikinn[2] = mapdata.P1motikinn[2] - 5;
-        mapdata.P1motikinn[3]++;
-        mapdata.TextUpdate();
-        return;
-    }
-
-    public void Break50_1()
-    {
-        if (turnplayer != 1) return;
-        if (mapdata.P1motikinn[3] <= 0) return;
-        if (mapdata.P1motikinn[2] >= 10) return;
-        mapdata.P1motikinn[3]--;
-        mapdata.P1motikinn[2] = mapdata.P1motikinn[2] + 5;
-        mapdata.TextUpdate();
-        return;
-    }
-    public void Change50Up1()
-    {
-        if (turnplayer != 1) return;
-        if (mapdata.P1motikinn[3] < 2) return;
-        if (mapdata.P1motikinn[4] >= 10) return;
-        mapdata.P1motikinn[3] = mapdata.P1motikinn[3] - 2;
-        mapdata.P1motikinn[4]++;
-        mapdata.TextUpdate();
-        return;
-    }
-
-    public void Break100_1()
-    {
-        if (turnplayer != 1) return;
-        if (mapdata.P1motikinn[4] <= 0) return;
-        if (mapdata.P1motikinn[3] >= 10) return;
-        mapdata.P1motikinn[4]--;
-        mapdata.P1motikinn[3] = mapdata.P1motikinn[3] + 2;
-        mapdata.TextUpdate();
-        return;
-    }
-
-    public void Change1Up2()
-    {
-        if (turnplayer != 2) return;
-        if (mapdata.P2motikinn[0] < 5) return;
-        if (mapdata.P2motikinn[1] >= 10) return;
-        mapdata.P2motikinn[0] = mapdata.P2motikinn[0] - 5;
-        mapdata.P2motikinn[1]++;
-        mapdata.TextUpdate();
-        return;
-    }
-
-    public void Break5_2()
-    {
-        if (turnplayer != 2) return;
-        if (mapdata.P2motikinn[1] <= 0) return;
-        if (mapdata.P2motikinn[0] >= 10) return;
-        mapdata.P2motikinn[1]--;
-        mapdata.P2motikinn[0] = mapdata.P2motikinn[0] + 5;
-        mapdata.TextUpdate();
-        return;
-    }
-
-    public void Change5Up2()
-    {
-        if (turnplayer != 2) return;
-        if (mapdata.P2motikinn[1] < 2) return;
-        if (mapdata.P2motikinn[2] >= 10) return;
-        mapdata.P2motikinn[1] = mapdata.P2motikinn[1] - 2;
-        mapdata.P2motikinn[2]++;
-        mapdata.TextUpdate();
-        return;
-    }
-
-    public void Break10_2()
-    {
-        if (turnplayer != 2) return;
-        if (mapdata.P2motikinn[2] <= 0) return;
-        if (mapdata.P2motikinn[1] >= 10) return;
-        mapdata.P2motikinn[2]--;
-        mapdata.P2motikinn[1] = mapdata.P2motikinn[1] + 2;
-        mapdata.TextUpdate();
-        return;
-    }
-
-    public void Change10Up2()
-    {
-        if (turnplayer != 2) return;
-        if (mapdata.P2motikinn[2] < 5) return;
-        if (mapdata.P2motikinn[3] >= 10) return;
-        mapdata.P2motikinn[2] = mapdata.P2motikinn[2] - 5;
-        mapdata.P2motikinn[3]++;
-        mapdata.TextUpdate();
-        return;
-    }
-
-    public void Break50_2()
-    {
-        if (turnplayer != 2) return;
-        if (mapdata.P2motikinn[3] <= 0) return;
-        if (mapdata.P2motikinn[2] >= 10) return;
-        mapdata.P2motikinn[3]--;
-        mapdata.P2motikinn[2] = mapdata.P2motikinn[2] + 5;
-        mapdata.TextUpdate();
-        return;
-    }
-    public void Change50Up2()
-    {
-        if (turnplayer != 2) return;
-        if (mapdata.P2motikinn[3] < 2) return;
-        if (mapdata.P2motikinn[4] >= 10) return;
-        mapdata.P2motikinn[3] = mapdata.P2motikinn[3] - 2;
-        mapdata.P2motikinn[4]++;
-        mapdata.TextUpdate();
-        return;
-    }
-
-    public void Break100_2()
-    {
-        if (turnplayer != 2) return;
-        if (mapdata.P2motikinn[4] <= 0) return;
-        if (mapdata.P2motikinn[3] >= 10) return;
-        mapdata.P2motikinn[4]--;
-        mapdata.P2motikinn[3] = mapdata.P2motikinn[3] + 2;
-        mapdata.TextUpdate();
-        return;
-    }
-
-
-
-
 }
-
-
-
 

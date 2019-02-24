@@ -902,8 +902,9 @@ GameObject:
   - component: {fileID: 4452000919205108628}
   - component: {fileID: 7827496305389166212}
   - component: {fileID: 6415288119922814942}
+  - component: {fileID: 739747741}
   m_Layer: 0
-  m_Name: 2_50
+  m_Name: 50yen2(Clone)
   m_TagString: motikinn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1003,6 +1004,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Komakind: 0
   PorE: 0
+--- !u!114 &739747741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471423235733895290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008201554692d4337bb5cfc50bcdddb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BLOCKKOMAKINDLIST: 0500000064000000
+  JUMPKOMAKINDLIST: 32000000
+  komaNamesLIST:
+  - 1yen1(Clone)
+  - 5yen1(Clone)
+  - 10yen1(Clone)
+  - 50yen1(Clone)
+  - 100yen1(Clone)
+  - 500yen1(Clone)
+  - 1yen2(Clone)
+  - 5yen2(Clone)
+  - 10yen2(Clone)
+  - 50yen2(Clone)
+  - 100yen2(Clone)
+  - 500yen2(Clone)
 --- !u!1 &566837723851697053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,8 +1567,9 @@ GameObject:
   - component: {fileID: 1097156780044189262}
   - component: {fileID: 5393694351644628711}
   - component: {fileID: 6404679962591068468}
+  - component: {fileID: 1311194358}
   m_Layer: 0
-  m_Name: 2_100
+  m_Name: 100yen2(Clone)
   m_TagString: motikinn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1640,6 +1669,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Komakind: 0
   PorE: 0
+--- !u!114 &1311194358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3295129092002016109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008201554692d4337bb5cfc50bcdddb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BLOCKKOMAKINDLIST: 0500000064000000
+  JUMPKOMAKINDLIST: 32000000
+  komaNamesLIST:
+  - 1yen1(Clone)
+  - 5yen1(Clone)
+  - 10yen1(Clone)
+  - 50yen1(Clone)
+  - 100yen1(Clone)
+  - 500yen1(Clone)
+  - 1yen2(Clone)
+  - 5yen2(Clone)
+  - 10yen2(Clone)
+  - 50yen2(Clone)
+  - 100yen2(Clone)
+  - 500yen2(Clone)
 --- !u!1 &3726537618425072593
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,8 +2649,9 @@ GameObject:
   - component: {fileID: 5834391852042208516}
   - component: {fileID: 5535158028622387998}
   - component: {fileID: 4079290913750927867}
+  - component: {fileID: 260346986}
   m_Layer: 0
-  m_Name: 2_1
+  m_Name: 1yen2(Clone)
   m_TagString: motikinn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2694,6 +2751,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Komakind: 0
   PorE: 0
+--- !u!114 &260346986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999963078909184289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008201554692d4337bb5cfc50bcdddb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BLOCKKOMAKINDLIST: 0500000064000000
+  JUMPKOMAKINDLIST: 32000000
+  komaNamesLIST:
+  - 1yen1(Clone)
+  - 5yen1(Clone)
+  - 10yen1(Clone)
+  - 50yen1(Clone)
+  - 100yen1(Clone)
+  - 500yen1(Clone)
+  - 1yen2(Clone)
+  - 5yen2(Clone)
+  - 10yen2(Clone)
+  - 50yen2(Clone)
+  - 100yen2(Clone)
+  - 500yen2(Clone)
 --- !u!1 &7057647339922287497
 GameObject:
   m_ObjectHideFlags: 0
@@ -2835,8 +2919,9 @@ GameObject:
   - component: {fileID: 6208783664068328665}
   - component: {fileID: 3738090541067110467}
   - component: {fileID: 94243622514361936}
+  - component: {fileID: 749518063}
   m_Layer: 0
-  m_Name: 2_10
+  m_Name: 10yen2(Clone)
   m_TagString: motikinn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2936,6 +3021,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Komakind: 0
   PorE: 0
+--- !u!114 &749518063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7063662104982474515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008201554692d4337bb5cfc50bcdddb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BLOCKKOMAKINDLIST: 0500000064000000
+  JUMPKOMAKINDLIST: 32000000
+  komaNamesLIST:
+  - 1yen1(Clone)
+  - 5yen1(Clone)
+  - 10yen1(Clone)
+  - 50yen1(Clone)
+  - 100yen1(Clone)
+  - 500yen1(Clone)
+  - 1yen2(Clone)
+  - 5yen2(Clone)
+  - 10yen2(Clone)
+  - 50yen2(Clone)
+  - 100yen2(Clone)
+  - 500yen2(Clone)
 --- !u!1 &7604227030280575025
 GameObject:
   m_ObjectHideFlags: 0
@@ -3235,8 +3347,9 @@ GameObject:
   - component: {fileID: 5809144520655325875}
   - component: {fileID: 3868006364372386211}
   - component: {fileID: 7543368236690406291}
+  - component: {fileID: 479548498}
   m_Layer: 0
-  m_Name: 2_5
+  m_Name: 5yen2(Clone)
   m_TagString: motikinn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3336,6 +3449,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Komakind: 0
   PorE: 0
+--- !u!114 &479548498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8576040985143941102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008201554692d4337bb5cfc50bcdddb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BLOCKKOMAKINDLIST: 0500000064000000
+  JUMPKOMAKINDLIST: 32000000
+  komaNamesLIST:
+  - 1yen1(Clone)
+  - 5yen1(Clone)
+  - 10yen1(Clone)
+  - 50yen1(Clone)
+  - 100yen1(Clone)
+  - 500yen1(Clone)
+  - 1yen2(Clone)
+  - 5yen2(Clone)
+  - 10yen2(Clone)
+  - 50yen2(Clone)
+  - 100yen2(Clone)
+  - 500yen2(Clone)
 --- !u!1 &8591337509621332782
 GameObject:
   m_ObjectHideFlags: 0
