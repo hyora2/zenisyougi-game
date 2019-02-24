@@ -73,7 +73,6 @@ public class SetPosition : MonoBehaviour
         pos = new Vector3(toChangePoint.ToWorldPoint(5), toChangePoint.ToWorldPoint(7), -1f);
         mapdata.Kdatalist.Add( Instantiate(okane[8], pos, transform.rotation));
 
-
     }
 
     public void MBU(int k, int TP, Vector3 wp, int LPX, int LPY)
@@ -93,31 +92,41 @@ public class SetPosition : MonoBehaviour
 
     }
 
+
+    private Dictionary<int, int> P1objindexnum = new Dictionary<int, int>
+    {
+        {1, 1},
+        {5, 3},
+        {10, 5},
+        {50, 7},
+        {100, 9},
+        {500, 11},
+
+    };
+
+    private Dictionary<int, int> P2objindexnum = new Dictionary<int, int>
+    {
+        {1, 2},
+        {5, 4},
+        {10, 6},
+        {50, 8},
+        {100, 10},
+        {500, 12},
+
+    };
+
     private int RetObjindexnum(int TP, int k)
     {
         if(TP == 1)
         {
-            if(k == 1) { return 1; }
-            else if(k == 5) { return 3; }
-            else if(k == 10) { return 5; }
-            else if(k == 50) { return 7; }
-            else if(k == 100) { return 9; }
-            else if(k == 500) { return 11; }
-
+            return P1objindexnum[k];
         }
         else if(TP == 2)
         {
-            if (k == 1) { return 2; }
-            else if (k == 5) { return 4; }
-            else if (k == 10) { return 6; }
-            else if (k == 50) { return 8; }
-            else if (k == 100) { return 10; }
-            else if (k == 500) { return 12; }
-
+            return P2objindexnum[k];
         }
+
         return -1;
-
     }
-
 
 }

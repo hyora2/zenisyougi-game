@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\script\ChangeButton.cs" />
     <Compile Include="Assets\script\DebugMapdata.cs" />
     <Compile Include="Assets\script\FadeScript.cs" />
     <Compile Include="Assets\script\Gamecontroller.cs" />

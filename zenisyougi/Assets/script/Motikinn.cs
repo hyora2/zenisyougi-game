@@ -28,36 +28,18 @@ public class Motikinn : MonoBehaviour
         Komakind = komaData.KomakindSet(komaname);
        
     }
-
-   
-    public int GetKomakindToIndexnum(int kind)
+    public Dictionary<int, int> GetKomakindToIndexnum = new Dictionary<int, int>
     {
-        int result = -1;
-        switch (kind)
-        {
-            case 1:
-                result = 0;
-                break;
-            case 5:
-                result = 1;
-                break;
-            case 10:
-                result = 2;
-                break;
-            case 50:
-                result = 3;
-                break;
-            case 100:
-                result = 4;
-                break;
-            case 500:
-                result = 5;
-                break;
-        }
-        return result;
-    }
+        {1, 0},
+        {5, 1},
+        {10, 2},
+        {50, 3},
+        {100,4},
+        {500, 5},
 
- 
+    };
+
+
     private void DataReset()
     {
         this.Komakind = 0;
@@ -75,8 +57,6 @@ public class Motikinn : MonoBehaviour
     }
 
   
- 
-
     public void InvisibleMove()
     {
         foreach (Transform item in motikinnshow.transform)
@@ -86,7 +66,7 @@ public class Motikinn : MonoBehaviour
         transform.Find("motikinnselect").gameObject.SetActive(false);
     }
 
-    public int ReturnXYnum(int x, int y)
+    private int ReturnXYnum(int x, int y)
     {
         return 10 * y + x;
     }
@@ -132,55 +112,7 @@ public class Motikinn : MonoBehaviour
                     motikinnshow.transform.Find(xynum.ToString()).gameObject.SetActive(true);
                 }
 
-                /*
-                if (TP == 1)
-                {
-                    if (y >= 7 && (kind == 50 || kind == 1)) break;
-                    if (y >= 6 && (kind == 50)) break;
-                    if (kind == 1)
-                    {
-                        for (int k = 1; k < 8; k++)
-                        {
-                            if (mapdata.map[x, k] == 1) nifu = true;
-                        }
 
-                        if(nifu == true)
-                        {
-                            nifu = false;
-                            continue;
-                        }
-                    }
-                    if (mapdata.map[x, y] == 0)
-                    {
-                        xynum = ReturnXYnum(x, y);
-                        motikinnshow.transform.Find(xynum.ToString()).gameObject.SetActive(true);
-                    }
-
-
-                }else if (TP == 2)
-                {
-                    if (y <= 1 && (kind == 50 || kind == 1)) break;
-                    if (y <= 2 && (kind == 50)) break;
-                    if (kind == 1)
-                    {
-                        for (int k = 1; k < 8; k++)
-                        {
-                            if (mapdata.map[x, k] == -1) nifu = true;
-                        }
-                        if (nifu == true)
-                        {
-                            nifu = false;
-                            continue;
-                        }
-                    }
-                    if (mapdata.map[x,y] == 0)
-                    {
-                        xynum = ReturnXYnum(x, y);
-                        motikinnshow.transform.Find(xynum.ToString()).gameObject.SetActive(true);
-                    }
-                   
-                }
-                 */
             }
         }
        

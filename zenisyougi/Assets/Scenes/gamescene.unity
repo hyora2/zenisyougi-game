@@ -124,8 +124,9 @@ GameObject:
   - component: {fileID: 19115482}
   - component: {fileID: 19115483}
   - component: {fileID: 19115484}
-  - component: {fileID: 19115485}
   - component: {fileID: 19115486}
+  - component: {fileID: 19115485}
+  - component: {fileID: 19115487}
   m_Layer: 0
   m_Name: GameCont
   m_TagString: Untagged
@@ -216,22 +217,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92cb43fdf5dc41f5a04bbc79e8ec693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  P1motikinn: 000000000000000000000000000000000000000000000000
-  P1motikinnsum: 0
-  P2motikinn: 000000000000000000000000000000000000000000000000
-  P2motikinnsum: 0
-  P1Text1: {fileID: 873060003434155301}
-  P1Text5: {fileID: 507138041}
-  P1Text10: {fileID: 579025640}
-  P1Text50: {fileID: 1256266566}
-  P1Text100: {fileID: 1081051638}
-  P1sum: {fileID: 3264727053813973324}
-  P2Text1: {fileID: 281198820}
-  P2Text5: {fileID: 1477983153}
-  P2Text10: {fileID: 1730896791}
-  P2Text50: {fileID: 1318139651}
-  P2Text100: {fileID: 773694619}
-  P2sum: {fileID: 6389314090852943595}
+  Texts1:
+  - {fileID: 873060003434155301}
+  - {fileID: 507138041}
+  - {fileID: 579025640}
+  - {fileID: 1256266566}
+  - {fileID: 1081051638}
+  - {fileID: 0}
+  - {fileID: 3264727053813973324}
+  Texts2:
+  - {fileID: 281198820}
+  - {fileID: 1477983153}
+  - {fileID: 1730896791}
+  - {fileID: 1318139651}
+  - {fileID: 773694619}
+  - {fileID: 0}
+  - {fileID: 6389314090852943595}
   Kdatalist: []
 --- !u!114 &19115486
 MonoBehaviour:
@@ -240,12 +241,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19115480}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7970cdb0215794c8ea9c7d76ecdd72b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Map: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+--- !u!114 &19115487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19115480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3ad672ec8d142a49e30177563d1dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &44326862
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,39 +455,6 @@ MonoBehaviour:
   fede: 0
   timecount: 4
   changescenetime: 2
---- !u!1 &260346985 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6999963078909184289, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
-    type: 3}
-  m_PrefabInstance: {fileID: 8591337509708740213}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &260346986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260346985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 008201554692d4337bb5cfc50bcdddb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BLOCKKOMAKINDLIST: 0500000064000000
-  JUMPKOMAKINDLIST: 32000000
-  komaNamesLIST:
-  - 1yen1(Clone)
-  - 5yen1(Clone)
-  - 10yen1(Clone)
-  - 50yen1(Clone)
-  - 100yen1(Clone)
-  - 500yen1(Clone)
-  - 1yen2(Clone)
-  - 5yen2(Clone)
-  - 10yen2(Clone)
-  - 50yen2(Clone)
-  - 100yen2(Clone)
-  - 500yen2(Clone)
 --- !u!114 &281198820 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 281198820, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
@@ -532,39 +512,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d06a18efda441eba7047cd961c7700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &479548497 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8576040985143941102, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
-    type: 3}
-  m_PrefabInstance: {fileID: 8591337509708740213}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &479548498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479548497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 008201554692d4337bb5cfc50bcdddb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BLOCKKOMAKINDLIST: 0500000064000000
-  JUMPKOMAKINDLIST: 32000000
-  komaNamesLIST:
-  - 1yen1(Clone)
-  - 5yen1(Clone)
-  - 10yen1(Clone)
-  - 50yen1(Clone)
-  - 100yen1(Clone)
-  - 500yen1(Clone)
-  - 1yen2(Clone)
-  - 5yen2(Clone)
-  - 10yen2(Clone)
-  - 50yen2(Clone)
-  - 100yen2(Clone)
-  - 500yen2(Clone)
 --- !u!1 &498996987
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,72 +724,6 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &739747740 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 471423235733895290, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
-    type: 3}
-  m_PrefabInstance: {fileID: 8591337509708740213}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &739747741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739747740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 008201554692d4337bb5cfc50bcdddb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BLOCKKOMAKINDLIST: 0500000064000000
-  JUMPKOMAKINDLIST: 32000000
-  komaNamesLIST:
-  - 1yen1(Clone)
-  - 5yen1(Clone)
-  - 10yen1(Clone)
-  - 50yen1(Clone)
-  - 100yen1(Clone)
-  - 500yen1(Clone)
-  - 1yen2(Clone)
-  - 5yen2(Clone)
-  - 10yen2(Clone)
-  - 50yen2(Clone)
-  - 100yen2(Clone)
-  - 500yen2(Clone)
---- !u!1 &749518062 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7063662104982474515, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
-    type: 3}
-  m_PrefabInstance: {fileID: 8591337509708740213}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &749518063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 749518062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 008201554692d4337bb5cfc50bcdddb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BLOCKKOMAKINDLIST: 0500000064000000
-  JUMPKOMAKINDLIST: 32000000
-  komaNamesLIST:
-  - 1yen1(Clone)
-  - 5yen1(Clone)
-  - 10yen1(Clone)
-  - 50yen1(Clone)
-  - 100yen1(Clone)
-  - 500yen1(Clone)
-  - 1yen2(Clone)
-  - 5yen2(Clone)
-  - 10yen2(Clone)
-  - 50yen2(Clone)
-  - 100yen2(Clone)
-  - 500yen2(Clone)
 --- !u!1 &771951113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,39 +885,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8635532479195335574, guid: 3a5faad15be634620a1cc10aeec719aa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3a5faad15be634620a1cc10aeec719aa, type: 3}
---- !u!1 &935809810 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2974529015495720098, guid: 46f3704528fb445d5b0d8158d01393ea,
-    type: 3}
-  m_PrefabInstance: {fileID: 8947533082007784248}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &935809811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935809810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 008201554692d4337bb5cfc50bcdddb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BLOCKKOMAKINDLIST: 0500000064000000
-  JUMPKOMAKINDLIST: 32000000
-  komaNamesLIST:
-  - 1yen1(Clone)
-  - 5yen1(Clone)
-  - 10yen1(Clone)
-  - 50yen1(Clone)
-  - 100yen1(Clone)
-  - 500yen1(Clone)
-  - 1yen2(Clone)
-  - 5yen2(Clone)
-  - 10yen2(Clone)
-  - 50yen2(Clone)
-  - 100yen2(Clone)
-  - 500yen2(Clone)
 --- !u!1 &959297457
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,39 +1122,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1049534420 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8292148112779554177, guid: 46f3704528fb445d5b0d8158d01393ea,
-    type: 3}
-  m_PrefabInstance: {fileID: 8947533082007784248}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1049534421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049534420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 008201554692d4337bb5cfc50bcdddb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BLOCKKOMAKINDLIST: 0500000064000000
-  JUMPKOMAKINDLIST: 32000000
-  komaNamesLIST:
-  - 1yen1(Clone)
-  - 5yen1(Clone)
-  - 10yen1(Clone)
-  - 50yen1(Clone)
-  - 100yen1(Clone)
-  - 500yen1(Clone)
-  - 1yen2(Clone)
-  - 5yen2(Clone)
-  - 10yen2(Clone)
-  - 50yen2(Clone)
-  - 100yen2(Clone)
-  - 500yen2(Clone)
 --- !u!1 &1071404102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,39 +1379,6 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1311194357 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3295129092002016109, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
-    type: 3}
-  m_PrefabInstance: {fileID: 8591337509708740213}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1311194358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1311194357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 008201554692d4337bb5cfc50bcdddb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BLOCKKOMAKINDLIST: 0500000064000000
-  JUMPKOMAKINDLIST: 32000000
-  komaNamesLIST:
-  - 1yen1(Clone)
-  - 5yen1(Clone)
-  - 10yen1(Clone)
-  - 50yen1(Clone)
-  - 100yen1(Clone)
-  - 500yen1(Clone)
-  - 1yen2(Clone)
-  - 5yen2(Clone)
-  - 10yen2(Clone)
-  - 50yen2(Clone)
-  - 100yen2(Clone)
-  - 500yen2(Clone)
 --- !u!114 &1318139651 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1318139651, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
@@ -1719,39 +1501,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1441573045 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8947533082071844012, guid: 46f3704528fb445d5b0d8158d01393ea,
-    type: 3}
-  m_PrefabInstance: {fileID: 8947533082007784248}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1441573046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441573045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 008201554692d4337bb5cfc50bcdddb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BLOCKKOMAKINDLIST: 0500000064000000
-  JUMPKOMAKINDLIST: 32000000
-  komaNamesLIST:
-  - 1yen1(Clone)
-  - 5yen1(Clone)
-  - 10yen1(Clone)
-  - 50yen1(Clone)
-  - 100yen1(Clone)
-  - 500yen1(Clone)
-  - 1yen2(Clone)
-  - 5yen2(Clone)
-  - 10yen2(Clone)
-  - 50yen2(Clone)
-  - 100yen2(Clone)
-  - 500yen2(Clone)
 --- !u!114 &1477983153 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1477983153, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
@@ -1795,39 +1544,6 @@ Transform:
   m_Father: {fileID: 290389270}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 180, y: 180, z: 0}
---- !u!1 &1660675884 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3174490761809455315, guid: 46f3704528fb445d5b0d8158d01393ea,
-    type: 3}
-  m_PrefabInstance: {fileID: 8947533082007784248}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1660675885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1660675884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 008201554692d4337bb5cfc50bcdddb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BLOCKKOMAKINDLIST: 0500000064000000
-  JUMPKOMAKINDLIST: 32000000
-  komaNamesLIST:
-  - 1yen1(Clone)
-  - 5yen1(Clone)
-  - 10yen1(Clone)
-  - 50yen1(Clone)
-  - 100yen1(Clone)
-  - 500yen1(Clone)
-  - 1yen2(Clone)
-  - 5yen2(Clone)
-  - 10yen2(Clone)
-  - 50yen2(Clone)
-  - 100yen2(Clone)
-  - 500yen2(Clone)
 --- !u!114 &1730896791 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1730896791, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
@@ -1919,39 +1635,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746097669}
   m_CullTransparentMesh: 0
---- !u!1 &1767941490 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 107571603484287334, guid: 46f3704528fb445d5b0d8158d01393ea,
-    type: 3}
-  m_PrefabInstance: {fileID: 8947533082007784248}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1767941491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767941490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 008201554692d4337bb5cfc50bcdddb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BLOCKKOMAKINDLIST: 0500000064000000
-  JUMPKOMAKINDLIST: 32000000
-  komaNamesLIST:
-  - 1yen1(Clone)
-  - 5yen1(Clone)
-  - 10yen1(Clone)
-  - 50yen1(Clone)
-  - 100yen1(Clone)
-  - 500yen1(Clone)
-  - 1yen2(Clone)
-  - 5yen2(Clone)
-  - 10yen2(Clone)
-  - 50yen2(Clone)
-  - 100yen2(Clone)
-  - 500yen2(Clone)
 --- !u!1 &1815587133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2500,42 +2183,42 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     - target: {fileID: 7975539699106539539, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     - target: {fileID: 7336691448676996010, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     - target: {fileID: 5831989515763966963, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     - target: {fileID: 6602035215022197162, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     - target: {fileID: 6862509651005247514, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     - target: {fileID: 6481242698838663772, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     - target: {fileID: 4289486010160570560, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fa4dad7ebbd94ca9a2bb7f6e715f705, type: 3}
 --- !u!1001 &8947533082007784248
@@ -2635,41 +2318,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     - target: {fileID: 7416751481591582004, guid: 46f3704528fb445d5b0d8158d01393ea,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     - target: {fileID: 6991268355367546197, guid: 46f3704528fb445d5b0d8158d01393ea,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     - target: {fileID: 6158791216985353302, guid: 46f3704528fb445d5b0d8158d01393ea,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     - target: {fileID: 734219926117381121, guid: 46f3704528fb445d5b0d8158d01393ea,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     - target: {fileID: 329600058563557324, guid: 46f3704528fb445d5b0d8158d01393ea,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     - target: {fileID: 2825383028534041963, guid: 46f3704528fb445d5b0d8158d01393ea,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     - target: {fileID: 2819456807007860290, guid: 46f3704528fb445d5b0d8158d01393ea,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 19115484}
+      objectReference: {fileID: 19115487}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46f3704528fb445d5b0d8158d01393ea, type: 3}

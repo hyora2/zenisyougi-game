@@ -11,6 +11,7 @@ public class DebugMapdata : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         mapdata = GetComponent<Mapdata>();
         mapinfo();
 
