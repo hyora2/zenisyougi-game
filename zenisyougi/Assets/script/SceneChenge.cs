@@ -5,14 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class SceneChenge : MonoBehaviour
 {
-   public void GameStart()
+    GameObject FadeOutObj;
+    FadeScript fade;
+
+    private void Start()
     {
-        SceneManager.LoadScene("gamescene");
+        FadeOutObj = GameObject.Find("Canvas");
+        fade = FadeOutObj.GetComponent<FadeScript>();
+    }
+
+    public void GameStart()
+    {
+        fade.SetchangesceneKey("gamescene");
+        fade.Setfadeout(true);
+      //  SceneManager.LoadScene("gamescene");
     }
 
     public void howtoplay()
     {
-        SceneManager.LoadScene("");
+        fade.SetchangesceneKey("howtoplay");
+        fade.Setfadeout(true);
+
+       // SceneManager.LoadScene("howtoplay");
     }
 
 

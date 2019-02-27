@@ -32,6 +32,7 @@ public class Gamecontroller : MonoBehaviour
 
     private void Start()
     {
+
         turnplayer = 1;
         changePoint = GetComponent<ToChangePoint>();
         mapdata = GetComponent<Mapdata>();
@@ -48,6 +49,8 @@ public class Gamecontroller : MonoBehaviour
         fadeoutOBJ = GameObject.Find("GameSetCanvas");
         fade = fadeoutOBJ.GetComponent<FadeScript>();
         gameset = false;
+        fade.SetAlfa(1f);
+        fade.Setfadein(true);
 
     }
 
@@ -417,7 +420,8 @@ public class Gamecontroller : MonoBehaviour
             if (winplayer == 2) p2win.SetActive(true);
                   }
         gameset = true;
-        fade.Setfade(true);
+        fade.SetchangesceneKey("title");
+        fade.Setfadeout(true);
       
     }
 

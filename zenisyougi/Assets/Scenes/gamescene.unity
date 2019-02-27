@@ -452,7 +452,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6330c86a56f274ec6bfc932f5e1b7c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fede: 0
+  fadein: 0
+  FadeInTimeCount: 1
   timecount: 4
   changescenetime: 2
 --- !u!114 &281198820 stripped
@@ -774,7 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2264151, g: 0.16981132, b: 0.16981132, a: 0}
+  m_Color: {r: 0.028301895, g: 0.028301895, b: 0.028301895, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
