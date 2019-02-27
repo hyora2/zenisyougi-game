@@ -411,6 +411,9 @@ public class Gamecontroller : MonoBehaviour
 
     private void GameSet(int winplayer)
     {
+        turnOBJ1.gameObject.SetActive(false);
+        turnOBJ2.gameObject.SetActive(false);
+
         if (winplayer == 0) {
             Debug.Log("draw!");
 
