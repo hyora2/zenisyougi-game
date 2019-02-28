@@ -553,7 +553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadein: 0
   FadeInTimeCount: 1
-  timecount: 4
+  timecount: 3
   changescenetime: 2
 --- !u!1 &230715733
 GameObject:

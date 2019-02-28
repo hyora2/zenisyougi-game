@@ -11,7 +11,7 @@ using System.Collections.Generic;
 public class FadeScript : MonoBehaviour
 {
     float alfa;
-    float speed = 0.01f;
+    float speed = 0.04f;
     float red, green, blue;
     private bool fedeout;
     public bool fadein = false;
