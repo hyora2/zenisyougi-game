@@ -1,5 +1,7 @@
 # zenisyougi-game
 
+ソースコードなどはzenisyogiフォルダ内にあります。
+
 Windowsにダウンロードする場合はzipファイルからどうぞ
 
 unityroomでも以下のURLから遊べます。
